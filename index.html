@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Echoes Baa 2026 Guide | Aooo × NOMELON NOLEMON</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%2307090f'/><text y='76' x='50' text-anchor='middle' font-size='72' font-family='Georgia,serif' font-weight='900' fill='none' stroke='url(%23g)' stroke-width='2.5'>E</text><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%25' stop-color='%2338bdf8'/><stop offset='100%25' stop-color='%23c084fc'/></linearGradient></defs></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+/* ═══════ RESET ═══════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#07090f;color:#e2e8f0;font-family:'Noto Sans JP',sans-serif;font-weight:400;line-height:1.65;overflow-x:hidden}
+body.locked{overflow:hidden}
+img{display:block;max-width:100%}
+
+/* ═══════ VARIABLES ═══════ */
+:root{
+  --bg:#07090f;--bg2:#0d1117;--bg3:#111827;
+  --a:#38bdf8;--a2:#22d3ee;--aacc:#fbbf24;--aglow:rgba(56,189,248,.28);--aborder:rgba(56,189,248,.2);
+  --n:#6366f1;--n2:#818cf8;--nacc:#c084fc;--nglow:rgba(99,102,241,.28);--nborder:rgba(99,102,241,.2);--naccglow:rgba(192,132,252,.28);
+  --w:#fff;--w2:#cbd5e1;--w3:#64748b;--border:rgba(255,255,255,.07);--border2:rgba(255,255,255,.12);
+  --fd:'Bebas Neue',sans-serif;--fm:'Space Mono',monospace;--fb:'Noto Sans JP',sans-serif;
+}
+
+/* ═══════ NOISE / GRID HELPERS ═══════ */
+.noise-bg{position:relative}
+.noise-bg::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E")}
+.grid-bg{position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);
+  background-size:65px 65px;
+  -webkit-mask-image:radial-gradient(ellipse at center,black 15%,transparent 72%);
+  mask-image:radial-gradient(ellipse at center,black 15%,transparent 72%)}
+
+/* ═══════ GLASS ═══════ */
+.glass{background:rgba(7,9,15,.38);backdrop-filter:blur(1px);-webkit-backdrop-filter:blur(1px);border:1px solid var(--border);border-radius:16px}
+.glass-a{background:rgba(7,9,15,.35);backdrop-filter:blur(1px);-webkit-backdrop-filter:blur(1px);border:1px solid var(--aborder);border-radius:16px}
+.glass-n{background:rgba(7,9,15,.35);backdrop-filter:blur(1px);-webkit-backdrop-filter:blur(1px);border:1px solid var(--nborder);border-radius:16px}
+
+/* ═══════ SPLASH ═══════ */
+#splash{position:fixed;inset:0;z-index:9999;background:#050507;display:flex;align-items:center;justify-content:center;overflow:hidden;transition:opacity .8s ease}
+#splash.hide{opacity:0;pointer-events:none}
+.sp-lines{position:absolute;inset:0;overflow:hidden}
+.sp-vl{position:absolute;top:0;bottom:0;width:1px;background:linear-gradient(180deg,transparent,rgba(56,189,248,.4),rgba(192,132,252,.4),transparent);animation:vline 6s linear infinite;opacity:0}
+.sp-vl:nth-child(1){left:12%;animation-delay:0s;animation-duration:5s}
+.sp-vl:nth-child(2){left:32%;animation-delay:1.8s;animation-duration:7s}
+.sp-vl:nth-child(3){left:55%;animation-delay:.6s;animation-duration:6.5s}
+.sp-vl:nth-child(4){left:72%;animation-delay:3.2s;animation-duration:5.5s}
+.sp-vl:nth-child(5){left:89%;animation-delay:1.4s;animation-duration:8s}
+.sp-hl{position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(56,189,248,.3),rgba(192,132,252,.3),transparent);animation:hline 8s ease-in-out infinite;opacity:0}
+.sp-hl:nth-child(6){top:22%;animation-delay:0s}
+.sp-hl:nth-child(7){top:58%;animation-delay:3.5s}
+.sp-hl:nth-child(8){top:83%;animation-delay:6s}
+@keyframes vline{0%{opacity:0;transform:translateY(-100%)}5%{opacity:1}95%{opacity:1}100%{opacity:0;transform:translateY(0)}}
+@keyframes hline{0%{opacity:0;transform:scaleX(0)}10%{opacity:1;transform:scaleX(1)}90%{opacity:1}100%{opacity:0}}
+.sp-content{position:relative;z-index:1;text-align:center;padding:1.5rem}
+.sp-eyebrow{font-family:var(--fm);font-size:.7rem;letter-spacing:.4em;color:var(--w3);text-transform:uppercase;margin-bottom:1.5rem}
+.sp-title{font-family:var(--fd);font-size:clamp(3.5rem,14vw,9.5rem);line-height:.88;letter-spacing:.07em;
+  background:linear-gradient(135deg,#38bdf8 0%,#818cf8 50%,#c084fc 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:1.2rem}
+.sp-date{font-family:var(--fm);font-size:clamp(.8rem,2.5vw,1.05rem);letter-spacing:.28em;color:var(--w2);margin-bottom:3rem}
+.sp-enter{display:inline-block;font-family:var(--fd);font-size:1.1rem;letter-spacing:.45em;color:var(--w);
+  border:1px solid rgba(255,255,255,.25);padding:.9rem 3.2rem;border-radius:4px;cursor:pointer;
+  background:transparent;transition:border-color .3s,box-shadow .3s,color .3s;position:relative;overflow:hidden}
+.sp-enter::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(56,189,248,.1),rgba(192,132,252,.1));opacity:0;transition:opacity .3s}
+.sp-enter:hover{border-color:rgba(56,189,248,.7);box-shadow:0 0 30px rgba(56,189,248,.2),0 0 60px rgba(192,132,252,.1);color:var(--a)}
+.sp-enter:hover::before{opacity:1}
+
+/* ═══════ BGM MINI PLAYER ═══════ */
+#bgm-mini{position:fixed;bottom:22px;right:22px;z-index:800;display:flex;flex-direction:column;align-items:flex-end;gap:.5rem}
+.bgm-panel{background:rgba(13,17,23,.92);backdrop-filter:blur(16px);border:1px solid var(--border2);border-radius:12px;padding:1rem;min-width:210px;display:none}
+.bgm-panel.open{display:block}
+.bgm-ptrack{font-family:var(--fm);font-size:.68rem;color:var(--w2);margin-bottom:.8rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bgm-ctrl{display:flex;align-items:center;gap:.6rem}
+.bgm-mbtn{background:rgba(255,255,255,.07);border:1px solid var(--border2);border-radius:6px;color:var(--w);padding:.28rem .65rem;font-size:.72rem;cursor:pointer;font-family:var(--fb);transition:background .2s;white-space:nowrap}
+.bgm-mbtn:hover{background:rgba(255,255,255,.13)}
+.bgm-vol{flex:1;accent-color:var(--a);cursor:pointer;height:3px}
+.bgm-trigger{display:flex;align-items:center;gap:.55rem;background:rgba(13,17,23,.88);backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:999px;padding:.5rem .9rem .5rem .55rem;cursor:pointer;transition:border-color .3s,box-shadow .3s}
+.bgm-trigger.amode{border-color:rgba(56,189,248,.3);box-shadow:0 0 18px rgba(56,189,248,.1)}
+.bgm-trigger.nmode{border-color:rgba(99,102,241,.3);box-shadow:0 0 18px rgba(99,102,241,.1)}
+.bgm-icon{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#38bdf8,#818cf8);display:flex;align-items:center;justify-content:center;font-size:.75rem;flex-shrink:0;transition:background .4s}
+.bgm-icon.nmode{background:linear-gradient(135deg,#6366f1,#c084fc)}
+.bgm-tname{font-family:var(--fm);font-size:.63rem;color:var(--w2);max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;transition:opacity .3s}
+
+/* ═══════ NAV ═══════ */
+nav{position:fixed;top:0;left:0;right:0;z-index:700;transition:background .3s,border-color .3s}
+nav.scrolled{background:rgba(7,9,15,.93);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:1160px;margin:0 auto;padding:0 1.5rem;height:62px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--fd);font-size:1.15rem;letter-spacing:.12em;background:linear-gradient(90deg,#38bdf8,#818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none;cursor:pointer}
+.nav-links{display:flex;gap:.3rem;list-style:none}
+.nav-links a{color:var(--w3);text-decoration:none;font-size:.77rem;font-weight:500;padding:.38rem .78rem;border-radius:6px;letter-spacing:.04em;transition:color .2s,background .2s}
+.nav-links a:hover{color:var(--w);background:rgba(255,255,255,.05)}
+@media(max-width:640px){.nav-links{display:none}}
+
+/* ═══════ LAYOUT ═══════ */
+section{padding:130px 1.5rem;position:relative}
+.wrap{max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.07),transparent)}
+
+/* Section number */
+.secnum-wrap{height:5.5rem;margin-bottom:-1.8rem;overflow:hidden}
+.secnum{font-family:var(--fd);font-size:8rem;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.045);user-select:none;letter-spacing:-.02em}
+
+/* Eyebrow / Heading */
+.eyebrow{font-family:var(--fm);font-size:.7rem;letter-spacing:.38em;color:var(--w3);text-transform:uppercase;margin-bottom:.5rem}
+.sec-h{font-family:var(--fd);font-size:clamp(2.5rem,7vw,5rem);line-height:.95;letter-spacing:.04em;margin-bottom:1rem}
+.sub-h{font-family:var(--fd);font-size:1.4rem;letter-spacing:.1em;color:var(--w2);margin-bottom:1.2rem;padding-left:1rem;position:relative}
+.sub-h::before{content:'';position:absolute;left:0;top:.1em;bottom:.1em;width:3px;border-radius:2px}
+.sub-h.a::before{background:var(--a)}
+.sub-h.n::before{background:var(--n2)}
+.sub{margin-bottom:78px}
+.sub:last-child{margin-bottom:0}
+
+/* Artist header */
+.artist-hdr{display:flex;align-items:flex-end;gap:1.5rem;flex-wrap:wrap;margin-bottom:3rem}
+.artist-nm{font-family:var(--fd);font-size:clamp(3rem,8vw,6rem);line-height:1;letter-spacing:.04em}
+.abadge-row{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.5rem}
+.abadge{font-family:var(--fm);font-size:.68rem;letter-spacing:.15em;padding:.3rem .75rem;border-radius:4px}
+.abadge.a{background:rgba(56,189,248,.1);border:1px solid var(--aborder);color:var(--a)}
+.abadge.n{background:rgba(99,102,241,.1);border:1px solid var(--nborder);color:var(--n2)}
+
+/* Badge */
+.badge{display:inline-block;font-family:var(--fm);font-size:.56rem;letter-spacing:.1em;padding:.13rem .48rem;border-radius:3px;vertical-align:middle;margin-left:.3rem;text-transform:uppercase}
+.bnew{background:rgba(56,189,248,.18);border:1px solid rgba(56,189,248,.35);color:var(--a)}
+.blive{background:rgba(251,191,36,.15);border:1px solid rgba(251,191,36,.3);color:#fbbf24}
+
+/* Num badge */
+.nb{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;font-family:var(--fm);font-size:.68rem;font-weight:700;flex-shrink:0}
+.nb.a{background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.28);color:var(--a)}
+.nb.n{background:rgba(99,102,241,.12);border:1px solid rgba(99,102,241,.28);color:var(--n2)}
+
+/* ═══════ INFO CARDS ═══════ */
+.card-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:.9rem;margin-bottom:1.4rem}
+.ic{padding:1.25rem 1.4rem;transition:transform .25s,border-color .25s}
+.ic:hover{transform:translateY(-3px)}
+.ic.a:hover{border-color:rgba(56,189,248,.4)!important}
+.ic.n:hover{border-color:rgba(99,102,241,.4)!important}
+.ic-lbl{font-family:var(--fm);font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;margin-bottom:.38rem}
+.ic-lbl.a{color:var(--a)}
+.ic-lbl.n{color:var(--n2)}
+.ic-v{font-family:var(--fd);font-size:1.9rem;letter-spacing:.03em;line-height:1;color:var(--w)}
+.ic-s{font-size:.76rem;color:var(--w3);margin-top:.28rem}
+
+/* ═══════ TABLES ═══════ */
+.tbl-scroll{overflow-x:auto}
+.stbl{width:100%;border-collapse:collapse}
+.stbl th{font-family:var(--fm);font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--w3);padding:.68rem 1rem;text-align:left;border-bottom:1px solid rgba(255,255,255,.06)}
+.stbl td{padding:.72rem 1rem;border-bottom:1px solid rgba(255,255,255,.04);vertical-align:middle;font-size:.9rem}
+.stbl tr:last-child td{border-bottom:none}
+.stbl.atbl tr:hover td{background:rgba(56,189,248,.03)}
+.stbl.ntbl tr:hover td{background:rgba(99,102,241,.03)}
+.tname{font-weight:700;font-size:.95rem}
+.treason{font-size:.83rem;color:var(--w3);line-height:1.6;opacity:.9}
+.sub-pred{font-size:.84rem;color:var(--nacc);font-weight:500;line-height:1.5}
+
+/* ═══════ YT PLAYER ═══════ */
+.yt-wrap{margin-bottom:60px}
+.yt-now{font-family:var(--fm);font-size:.7rem;letter-spacing:.2em;margin-bottom:.6rem;transition:color .3s}
+.yt-now.a{color:var(--a)}
+.yt-now.n{color:var(--n2)}
+.yt-frame{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:16/9;max-width:720px}
+.yt-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.7rem;color:var(--w3);font-size:.88rem;transition:opacity .3s}
+.yt-ph-icon{font-size:2.5rem;opacity:.35}
+.yt-iframe{position:absolute;inset:0;width:100%;height:100%;border:none;display:none}
+.yt-iframe.on{display:block}
+.yt-player-wrap{position:absolute;inset:0;display:none}
+.yt-player-wrap iframe{width:100%;height:100%;border:none;border-radius:16px}
+.ytb{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:3px;border:none;cursor:pointer;font-size:.58rem;margin-left:.38rem;vertical-align:middle;flex-shrink:0;transition:transform .15s,opacity .15s}
+.ytb.a{background:rgba(56,189,248,.14);color:var(--a);border:1px solid rgba(56,189,248,.28)}
+.ytb.n{background:rgba(99,102,241,.14);color:var(--n2);border:1px solid rgba(99,102,241,.28)}
+.ytb:hover{transform:scale(1.25);opacity:.85}
+
+/* ═══════ CHART ═══════ */
+.chart-outer{padding:1.4rem;margin-bottom:1rem}
+.chart-scroll{overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.08) transparent}
+
+/* ═══════ RELEASE CARDS ═══════ */
+.rel-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:1.2rem;margin-bottom:1.4rem}
+.rel-card{padding:1.5rem;transition:transform .25s,box-shadow .25s,border-color .25s}
+.rel-card:hover{transform:translateY(-4px)}
+.rel-card.a:hover{border-color:rgba(56,189,248,.45)!important;box-shadow:0 8px 32px rgba(56,189,248,.12)}
+.rel-type{font-family:var(--fm);font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;margin-bottom:.55rem}
+.rel-type.a{color:var(--a)}
+.rel-icon{font-size:1.9rem;margin-bottom:.6rem;opacity:.65}
+.rel-title{font-family:var(--fd);font-size:2rem;letter-spacing:.04em;line-height:1;margin-bottom:.38rem;color:var(--w)}
+.rel-date{font-family:var(--fm);font-size:.75rem;color:var(--w3);margin-bottom:.45rem}
+.rel-desc{font-size:.81rem;color:var(--w3);line-height:1.55}
+
+/* NOTE BOX */
+.nbox{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:.9rem 1.1rem;margin-top:.9rem;font-size:.83rem;color:var(--w3);line-height:1.75}
+.nbox.a{border-color:rgba(56,189,248,.14)}
+.nbox.n{border-color:rgba(99,102,241,.14)}
+.nbox ul{margin:.3rem 0 0 1.1rem}
+.nbox li{margin-bottom:.18rem}
+
+/* FLASH BOX */
+.flash-box{border:1px dashed rgba(56,189,248,.32);border-radius:12px;padding:1.15rem 1.45rem;margin-top:1.4rem;background:rgba(56,189,248,.03);position:relative;overflow:hidden}
+.flash-box::after{content:'';position:absolute;inset:0;border-radius:12px;border:1px solid rgba(56,189,248,.18);animation:flashp 2.2s ease infinite;pointer-events:none}
+@keyframes flashp{0%,100%{opacity:.25}50%{opacity:1}}
+.flash-text{font-size:.87rem;color:var(--w2);line-height:1.7}
+
+/* ═══════ NOMELON SECTION ═══════ */
+#nomelon{background:radial-gradient(ellipse at 80% 22%,rgba(99,102,241,.08) 0%,transparent 45%),radial-gradient(ellipse at 18% 78%,rgba(192,132,252,.06) 0%,transparent 45%),linear-gradient(rgba(7,9,15,.50),rgba(7,9,15,.50)),url('ノーメロ1.png') center top/100% auto no-repeat,#07090f}
+#nm-chart-sec{background:linear-gradient(180deg,rgba(7,9,15,1) 0%,rgba(7,9,15,.97) 8%,rgba(7,9,15,.70) 18%,rgba(7,9,15,.50) 28%,rgba(7,9,15,.50) 93%,rgba(7,9,15,.97) 100%),url('ノーメロ2.png') center 20%/100% auto no-repeat,#07090f;position:relative}
+#nm-pred-sec{background:linear-gradient(180deg,rgba(7,9,15,.97) 0%,rgba(7,9,15,.50) 7%,rgba(7,9,15,.50) 93%,rgba(7,9,15,.97) 100%),url('ノーメロ3.png') center 20%/100% auto no-repeat,#07090f;position:relative}
+.nm-name{background:linear-gradient(135deg,#6366f1,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* SAYONARA HIGHLIGHT */
+.say-wrap{padding:2.8rem 1.8rem;border-radius:20px;text-align:center;margin:1.8rem 0;position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(99,102,241,.1),rgba(192,132,252,.08));border:2px solid rgba(99,102,241,.3)}
+.say-wrap::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(129,140,248,.1) 0%,transparent 70%);animation:sglow 3s ease infinite}
+@keyframes sglow{0%,100%{opacity:.45}50%{opacity:1}}
+.say-text{font-family:var(--fd);font-size:clamp(2rem,7vw,5rem);letter-spacing:.04em;line-height:1;position:relative;z-index:1;
+  background:linear-gradient(135deg,#818cf8,#c084fc,#e879f9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  animation:spulse 2.5s ease infinite;filter:drop-shadow(0 0 20px rgba(192,132,252,.45))}
+@keyframes spulse{0%,100%{filter:drop-shadow(0 0 20px rgba(192,132,252,.45))}50%{filter:drop-shadow(0 0 45px rgba(192,132,252,.85))}}
+.say-sub{font-family:var(--fm);font-size:.83rem;color:var(--w2);margin-top:.8rem;position:relative;z-index:1}
+.say-cnt{font-size:1.3rem;color:var(--nacc);font-weight:700}
+
+/* RANKING */
+.rank-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-bottom:2rem}
+@media(max-width:580px){.rank-grid{grid-template-columns:1fr}}
+.rank-card{padding:1.4rem}
+.rank-card-title{font-family:var(--fd);font-size:1rem;letter-spacing:.12em;color:var(--w2);margin-bottom:.9rem;padding-bottom:.65rem;border-bottom:1px solid rgba(255,255,255,.06)}
+.rank-item{display:flex;align-items:center;justify-content:space-between;padding:.36rem 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.87rem}
+.rank-item:last-child{border-bottom:none}
+.rcnt{font-family:var(--fm);font-size:1rem;color:var(--n2)}
+.rank-item.sayr{background:rgba(192,132,252,.08);border:1px solid rgba(192,132,252,.2)!important;border-radius:6px;padding:.5rem .7rem;margin-bottom:.3rem}
+.rank-item.sayr .rcnt{font-size:1.45rem;color:var(--nacc)}
+.rank-item.sayr .rname{color:var(--nacc);font-weight:700}
+
+/* TABS */
+.tab-nav{display:flex;gap:.4rem;overflow-x:auto;padding-bottom:.5rem;margin-bottom:1.3rem;scrollbar-width:thin}
+.tabbtn{flex-shrink:0;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:6px;color:var(--w3);font-size:.74rem;font-weight:600;padding:.42rem .88rem;cursor:pointer;transition:all .2s;font-family:var(--fm);white-space:nowrap;letter-spacing:.04em}
+.tabbtn:hover{color:var(--w);border-color:rgba(99,102,241,.28)}
+.tabbtn.active{background:rgba(99,102,241,.15);color:var(--n2);border-color:var(--nborder)}
+.tab-pane{display:none}
+.tab-pane.active{display:block}
+.past-card{padding:1.4rem}
+.past-meta{font-family:var(--fm);font-size:.68rem;letter-spacing:.18em;color:var(--w3);margin-bottom:.9rem}
+.track-list{list-style:none}
+.tli{display:flex;align-items:center;gap:.8rem;padding:.36rem 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.88rem}
+.tli:last-child{border-bottom:none}
+.tln{font-family:var(--fm);font-size:1rem;color:var(--n2);min-width:26px}
+
+/* ATT TABLE */
+.att-tbl-w{margin-top:1.8rem;overflow-x:auto}
+.att-tbl{width:100%;border-collapse:collapse;border-radius:10px;overflow:hidden}
+.att-tbl th{font-family:var(--fm);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--w3);padding:.62rem 1rem;background:rgba(255,255,255,.02);border-bottom:1px solid rgba(255,255,255,.06);text-align:left}
+.att-tbl td{padding:.58rem 1rem;border-bottom:1px solid rgba(255,255,255,.04);font-size:.88rem}
+.att-tbl tr:last-child td{border-bottom:none}
+.acnt{font-family:var(--fm);font-size:1rem;color:var(--n2);font-weight:700}
+
+/* ANALYSIS */
+.an-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem;margin-bottom:1.4rem}
+@media(max-width:768px){.an-grid{grid-template-columns:1fr}}
+.an-card{padding:1.4rem}
+.an-title{font-family:var(--fd);font-size:.95rem;letter-spacing:.12em;margin-bottom:.85rem}
+.an-title.n{color:var(--n2)}
+.an-ul{list-style:none;font-size:.85rem;color:var(--w2);line-height:1.75}
+.an-ul li{padding:.26rem 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.an-ul li:last-child{border-bottom:none}
+.an-note{font-style:italic;font-size:.8rem;color:var(--w3);margin-top:.6rem}
+
+/* MEMO BOX */
+.memo-box{border-radius:12px;padding:1.35rem 1.55rem;margin-top:1.4rem;font-size:.86rem;color:var(--w2);line-height:1.9;border-left:3px solid var(--n2);background:rgba(99,102,241,.04)}
+.memo-box p{padding:.1rem 0}
+.memo-box p::before{content:'※ ';color:var(--n2);font-weight:700}
+
+/* ═══════ SECTION TRANSITION ═══════ */
+.sec-trans{height:110px;background:linear-gradient(180deg,rgba(56,189,248,.04) 0%,rgba(99,102,241,.04) 100%);position:relative}
+.sec-trans::after{content:'';position:absolute;left:12%;right:12%;top:50%;height:1px;background:linear-gradient(90deg,transparent,rgba(56,189,248,.25),rgba(99,102,241,.25),transparent)}
+
+/* ═══════ ACCESS ═══════ */
+#access{background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%)}
+.acc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.8rem}
+@media(max-width:768px){.acc-grid{grid-template-columns:1fr}}
+.acc-card{padding:1.8rem}
+.acc-title{font-family:var(--fd);font-size:1.2rem;letter-spacing:.1em;background:linear-gradient(90deg,#38bdf8,#818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.85rem;line-height:1.35}
+.acc-addr{font-size:.87rem;color:var(--w2);margin-bottom:1.1rem;line-height:1.7}
+.acc-routes{list-style:none;font-size:.84rem;color:var(--w2)}
+.acc-routes li{padding:.33rem 0 .33rem 1.05rem;border-bottom:1px solid rgba(255,255,255,.04);position:relative;line-height:1.6}
+.acc-routes li::before{content:'▶';font-size:.54rem;color:var(--a);position:absolute;left:0;top:.58rem}
+.acc-routes li:last-child{border-bottom:none}
+.map-wrap{border-radius:16px;overflow:hidden;height:285px;margin-top:1.4rem;border:1px solid var(--border)}
+.map-wrap iframe{width:100%;height:100%;border:none}
+.btns{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.3rem}
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.72rem 1.35rem;border-radius:7px;font-weight:700;font-size:.86rem;text-decoration:none;transition:transform .2s,box-shadow .2s;cursor:pointer;border:none}
+.btn:hover{transform:translateY(-2px)}
+.btn.a{background:rgba(56,189,248,.1);border:1px solid var(--aborder);color:var(--a)}
+.btn.a:hover{box-shadow:0 4px 20px rgba(56,189,248,.2);border-color:var(--a)}
+.btn.n{background:rgba(99,102,241,.1);border:1px solid var(--nborder);color:var(--n2)}
+.btn.n:hover{box-shadow:0 4px 20px rgba(99,102,241,.2);border-color:var(--n2)}
+
+/* ═══════ SPECIAL THANKS ═══════ */
+#thanks{background:radial-gradient(ellipse at 30% 40%,rgba(56,189,248,.05) 0%,transparent 50%),radial-gradient(ellipse at 70% 60%,rgba(192,132,252,.05) 0%,transparent 50%),#07090f;padding:8rem 1.5rem}
+.thanks-lead{text-align:center;max-width:560px;margin:0 auto 4.5rem;color:var(--w2);font-size:.93rem;line-height:2}
+.thanks-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.2rem;max-width:680px;margin:0 auto}
+@media(max-width:560px){.thanks-grid{grid-template-columns:1fr}}
+.tcard{border-radius:24px;padding:2.4rem 1.8rem 2.8rem;text-align:center;position:relative;transition:transform .35s}
+.tcard:hover{transform:translateY(-6px)}
+.tcard::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .35s}
+.tcard:hover::before{opacity:1}
+.tcard.ta{background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.18)}
+.tcard.ta::before{background:radial-gradient(ellipse at 50% 0%,rgba(56,189,248,.08),transparent 65%)}
+.tcard.tn{background:rgba(99,102,241,.04);border:1px solid rgba(99,102,241,.18)}
+.tcard.tn::before{background:radial-gradient(ellipse at 50% 0%,rgba(192,132,252,.08),transparent 65%)}
+.tcard-label{font-family:var(--fm);font-size:.56rem;letter-spacing:.35em;color:var(--w3);text-transform:uppercase;margin-bottom:1.6rem;position:relative;z-index:1}
+.tcard-init{font-family:var(--fd);font-size:4rem;line-height:1;letter-spacing:.06em;position:relative;z-index:1;margin-bottom:1.2rem}
+.tcard.ta .tcard-init{background:linear-gradient(135deg,#38bdf8,#22d3ee,#7dd3fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 28px rgba(56,189,248,.5))}
+.tcard.tn .tcard-init{background:linear-gradient(135deg,#818cf8,#c084fc,#e879f9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 28px rgba(192,132,252,.5))}
+.tcard-msg{font-size:.85rem;color:var(--w2);line-height:1.9;position:relative;z-index:1}
+.tcard-star{display:block;margin-top:1.6rem;font-size:1rem;letter-spacing:.4em;position:relative;z-index:1}
+.tcard.ta .tcard-star{color:rgba(56,189,248,.5)}
+.tcard.tn .tcard-star{color:rgba(192,132,252,.5)}
+.thanks-bottom{text-align:center;margin-top:4rem;font-family:var(--fm);font-size:.7rem;letter-spacing:.22em;color:var(--w3);text-transform:uppercase}
+
+/* ═══════ FOOTER ═══════ */
+footer{padding:3rem 1.5rem;text-align:center;border-top:1px solid rgba(255,255,255,.05);background:linear-gradient(180deg,rgba(56,189,248,.04),rgba(99,102,241,.06),rgba(192,132,252,.04))}
+.foot-logo{font-family:var(--fd);font-size:2.1rem;letter-spacing:.08em;background:linear-gradient(135deg,#38bdf8,#818cf8,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.45rem}
+.foot-note{font-size:.77rem;color:var(--w3);margin-bottom:1.1rem}
+.foot-link{color:var(--n2);text-decoration:none;font-size:.87rem;transition:color .2s}
+.foot-link:hover{color:var(--w)}
+.foot-copy{font-size:.7rem;color:var(--w3);margin-top:.9rem;opacity:.55}
+
+
+
+/* ═══════ AOOO SECTION ═══════ */
+#aooo{background:radial-gradient(ellipse at 14% 28%,rgba(56,189,248,.065) 0%,transparent 44%),radial-gradient(ellipse at 88% 72%,rgba(34,211,238,.04) 0%,transparent 44%),linear-gradient(rgba(7,9,15,.50),rgba(7,9,15,.50)),url('aooo1.png') center -3%/100% auto no-repeat,#07090f}
+#aooo-chart-sec{background:linear-gradient(180deg,rgba(7,9,15,1) 0%,rgba(7,9,15,.97) 8%,rgba(7,9,15,.70) 18%,rgba(7,9,15,.50) 28%,rgba(7,9,15,.50) 93%,rgba(7,9,15,.97) 100%),url('aooo3.png') center 20%/100% auto no-repeat,#07090f;position:relative}
+#aooo-pred-sec{background:linear-gradient(180deg,rgba(7,9,15,.97) 0%,rgba(7,9,15,.50) 7%,rgba(7,9,15,.50) 93%,rgba(7,9,15,.97) 100%),url('aooo2.png') center top/100% auto no-repeat,#07090f;position:relative}
+.a-name{color:var(--a);text-shadow:0 0 40px var(--aglow)}
+
+/* ═══════ HERO ═══════ */
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding:80px 1.5rem;background:radial-gradient(ellipse at 22% 50%,rgba(56,189,248,.05) 0%,transparent 40%),radial-gradient(ellipse at 80% 50%,rgba(99,102,241,.05) 0%,transparent 40%),#07090f}
+.hero-content{position:relative;z-index:1}
+.hero-ey{font-family:var(--fm);font-size:.7rem;letter-spacing:.4em;color:var(--w3);margin-bottom:1.5rem;text-transform:uppercase}
+.hero-t{font-family:var(--fd);font-size:clamp(3.5rem,10vw,8rem);line-height:.9;letter-spacing:.04em;margin-bottom:.5rem}
+.hero-t1{color:var(--a);display:block}
+.hero-t2{background:linear-gradient(135deg,#38bdf8,#818cf8,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block}
+.hero-sub{font-size:clamp(.9rem,2.5vw,1.2rem);font-weight:300;color:var(--w2);letter-spacing:.1em;margin-bottom:3rem}
+.hero-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:.9rem;max-width:780px;margin:0 auto 2.5rem}
+.hcard{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:1.1rem;text-align:left;backdrop-filter:blur(8px)}
+.hcard-lbl{font-family:var(--fm);font-size:.6rem;letter-spacing:.25em;color:var(--w3);text-transform:uppercase;margin-bottom:.38rem}
+.hcard-v{font-weight:500;font-size:.9rem;color:var(--w);line-height:1.45}
+.hero-artists{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
+.hat{padding:.6rem 1.4rem;border-radius:6px;font-weight:700;font-size:.93rem;text-align:center}
+.hat.a{background:rgba(56,189,248,.08);border:1px solid var(--aborder);color:var(--a)}
+.hat.n{background:rgba(99,102,241,.08);border:1px solid var(--nborder);color:var(--n2)}
+.hat-day{display:block;font-family:var(--fm);font-size:.62rem;letter-spacing:.14em;opacity:.7;font-weight:400}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.18rem;z-index:1}
+.scroll-hint span{display:block;width:7px;height:7px;border-right:1px solid rgba(255,255,255,.28);border-bottom:1px solid rgba(255,255,255,.28);transform:rotate(45deg);animation:shint 1.6s ease infinite}
+.scroll-hint span:nth-child(2){animation-delay:.2s}
+.scroll-hint span:nth-child(3){animation-delay:.4s}
+@keyframes shint{0%,100%{opacity:0}50%{opacity:1}}
+
+/* ═══════ SCROLL ANIMATION ═══════ */
+.fi{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.fi.vis{opacity:1;transform:none}
+.fi.d1{transition-delay:.1s}.fi.d2{transition-delay:.2s}.fi.d3{transition-delay:.3s}
+
+/* ═══════ RESPONSIVE ═══════ */
+
+/* ── タブレット (〜768px) ── */
+@media(max-width:768px){
+  /* セクション余白 */
+  section{padding:90px 1.2rem}
+  #thanks{padding:5rem 1.2rem}
+  .sub{margin-bottom:56px}
+
+  /* アーティストヘッダー */
+  .artist-hdr{gap:1rem;margin-bottom:2rem}
+
+  /* 背景写真: タブレット・スマホでは非表示（パフォーマンス向上・読みやすさ優先） */
+  #nomelon,#aooo,#nm-chart-sec,#nm-pred-sec,#aooo-chart-sec,#aooo-pred-sec{
+    background-image:none!important;
+    background-color:#07090f;
+  }
+
+  .stbl td,.stbl th{padding:.55rem .75rem;font-size:.84rem}
+  .tname{font-size:.88rem}
+  .chart-outer{padding:.9rem}
+
+  /* カードグリッド */
+  .hero-cards{grid-template-columns:1fr 1fr}
+  .rel-grid{grid-template-columns:1fr}
+
+  /* BGMプレイヤー */
+  #bgm-mini{bottom:14px;right:14px}
+  .bgm-panel{min-width:180px}
+
+  /* アクセスグリッド */
+  .acc-grid{grid-template-columns:1fr}
+  .an-grid{grid-template-columns:1fr}
+}
+
+/* ── スマホ (〜480px) ── */
+@media(max-width:480px){
+  /* セクション余白さらに縮小 */
+  section{padding:68px 1rem}
+  #thanks{padding:3.5rem 1rem}
+  .sub{margin-bottom:42px}
+
+  /* ヒーロー */
+  .hero-cards{grid-template-columns:1fr}
+  .hero-sub{letter-spacing:.05em}
+
+  /* サブ見出し */
+  .sub-h{font-size:1.15rem}
+
+  /* 時間枠カード: 2列 */
+  .card-row{grid-template-columns:1fr 1fr}
+
+  /* リリースカード: 1列 */
+  .rel-grid{grid-template-columns:1fr}
+
+  /* セトリテーブル: min-widthで横スクロール確保 */
+  .stbl{min-width:240px}
+  .stbl td,.stbl th{padding:.48rem .6rem;font-size:.8rem}
+
+  /* アーティスト名 */
+  .artist-nm{font-size:clamp(2.4rem,13vw,4rem)}
+
+  /* スプラッシュのENTERボタン */
+  .sp-enter{padding:.8rem 2.2rem;font-size:1rem}
+
+  /* BGMプレイヤー: コンパクトに */
+  #bgm-mini{bottom:10px;right:10px}
+  .bgm-tname{max-width:95px}
+  .bgm-panel{min-width:160px;padding:.8rem}
+
+  /* スペシャルサンクス */
+  .tcard-init{font-size:3.2rem}
+  .tcard-label{margin-bottom:1.1rem}
+
+  /* マップ高さ縮小 */
+  .map-wrap{height:220px}
+
+  /* セクションナンバー縮小 */
+  .secnum{font-size:5.5rem}
+  .secnum-wrap{height:4rem;margin-bottom:-1.2rem}
+}
+
+/* ── 極小スマホ (〜360px) ── */
+@media(max-width:360px){
+  section{padding:60px .9rem}
+  .card-row{grid-template-columns:1fr}
+  .abadge{font-size:.6rem;padding:.25rem .55rem}
+}
+</style>
+</head>
+<body class="locked">
+
+<!-- ══════ SPLASH ══════ -->
+<div id="splash">
+  <div class="sp-lines">
+    <div class="sp-vl"></div><div class="sp-vl"></div><div class="sp-vl"></div>
+    <div class="sp-vl"></div><div class="sp-vl"></div>
+    <div class="sp-hl"></div><div class="sp-hl"></div><div class="sp-hl"></div>
+  </div>
+  <div class="sp-content">
+    <div class="sp-eyebrow">Central Music &amp; Entertainment Festival</div>
+    <div class="sp-title">Echoes<br>Baa 2026</div>
+    <div class="sp-date">2026.4.4 SAT &amp; 4.5 SUN &nbsp;—&nbsp; 横浜赤レンガ倉庫</div>
+    <button class="sp-enter" id="sp-enter">ENTER</button>
+  </div>
+</div>
+
+<!-- ══════ BGM MINI PLAYER ══════ -->
+<div id="bgm-mini" style="display:none;">
+  <div class="bgm-panel" id="bgm-panel">
+    <div class="bgm-ptrack" id="bgm-ptrack">—</div>
+    <div class="bgm-ctrl">
+      <button class="bgm-mbtn" id="bgm-pbtn">⏸ 停止</button>
+      <button class="bgm-mbtn" id="bgm-mbtn">🔊 ミュート</button>
+      <input type="range" class="bgm-vol" id="bgm-vol" min="0" max="100" value="40">
+    </div>
+  </div>
+  <div class="bgm-trigger amode" id="bgm-trigger">
+    <div class="bgm-icon" id="bgm-icon">♪</div>
+    <span class="bgm-tname" id="bgm-tname">BGM</span>
+  </div>
+</div>
+<div style="position:fixed;bottom:-9999px;left:-9999px;width:1px;height:1px;overflow:hidden;">
+  <div id="bgm-yt"></div>
+</div>
+
+<!-- ══════ NAV ══════ -->
+<nav id="main-nav">
+  <div class="nav-in">
+    <a class="nav-logo" href="#" onclick="returnToSplash();return false;">Echoes Baa 2026 Guide</a>
+    <ul class="nav-links">
+      <li><a href="#hero">Overview</a></li>
+      <li><a href="#aooo">Aooo</a></li>
+      <li><a href="#nomelon">NOMELON NOLEMON</a></li>
+      <li><a href="#access">Access</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════
+     HERO
+══════════════════════════════════ -->
+<section id="hero">
+  <div class="grid-bg"></div>
+  <div class="hero-content">
+    <p class="hero-ey fi">Friends Festival Guide — 2026.04.04 &amp; 05</p>
+    <h1 class="hero-t fi d1"><span class="hero-t1">Echoes</span><span class="hero-t2">Baa 2026</span></h1>
+    <p class="hero-sub fi d2">Aooo × NOMELON NOLEMON セトリ大予想</p>
+    <div class="hero-cards fi d2">
+      <div class="hcard">
+        <div class="hcard-lbl">Venue</div>
+        <div class="hcard-v">横浜赤レンガ倉庫<br>赤レンガパーク特設会場</div>
+      </div>
+      <div class="hcard">
+        <div class="hcard-lbl">Date</div>
+        <div class="hcard-v">2026年 4/4(土) &amp; 4/5(日)</div>
+      </div>
+      <div class="hcard">
+        <div class="hcard-lbl">Time</div>
+        <div class="hcard-v">OPEN 11:00 / START 12:30</div>
+      </div>
+      <div class="hcard">
+        <div class="hcard-lbl">Event</div>
+        <div class="hcard-v">CENTRAL MUSIC &amp;<br>ENTERTAINMENT FESTIVAL</div>
+      </div>
+    </div>
+    <div class="hero-artists fi d3">
+      <div class="hat n"><span class="hat-day">4/4 (土) Day 1</span>NOMELON NOLEMON</div>
+      <div class="hat a"><span class="hat-day">4/5 (日) Day 2</span>Aooo</div>
+    </div>
+  </div>
+  <div class="scroll-hint"><span></span><span></span><span></span></div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════
+     AOOO SECTION
+══════════════════════════════════ -->
+<section id="aooo">
+  <div class="wrap">
+    <div class="secnum-wrap"><div class="secnum">01</div></div>
+
+    <div class="artist-hdr fi">
+      <h2 class="sec-h artist-nm a-name">Aooo</h2>
+      <div class="abadge-row">
+        <span class="abadge a">4.5 SUN</span>
+        <span class="abadge a">12:30 – 13:40</span>
+        <span class="abadge a">70 MIN</span>
+      </div>
+    </div>
+
+    <!-- YouTube Player -->
+    <div class="sub yt-wrap fi">
+      <div class="yt-now a" id="a-now">▶ 曲を選んで予習しよう</div>
+      <div class="yt-frame glass-a" id="a-frame">
+        <div class="yt-ph" id="a-ph"><div class="yt-ph-icon">▶</div><div>下のセトリから曲を選ぶとここで再生</div></div>
+        <div class="yt-player-wrap" id="a-player-wrap"></div>
+      </div>
+    </div>
+
+    <!-- 時間枠情報 -->
+    <div class="sub">
+      <h3 class="sub-h a fi">時間枠情報</h3>
+      <div class="card-row fi d1">
+        <div class="ic glass-a a"><div class="ic-lbl a">Start Time</div><div class="ic-v">12:30</div><div class="ic-s">次アーティスト開始: 13:40</div></div>
+        <div class="ic glass-a a"><div class="ic-lbl a">Set Length</div><div class="ic-v">70 MIN</div><div class="ic-s">2025年と同じ枠</div></div>
+        <div class="ic glass-a a"><div class="ic-lbl a">Expected</div><div class="ic-v">約10曲</div><div class="ic-s">2025年実績: 10曲</div></div>
+      </div>
+    </div>
+
+    <!-- 2025年セトリ -->
+    <div class="sub" id="aooo-chart-sec">
+      <h3 class="sub-h a fi">2025年 Echoes Baa セトリ実績</h3>
+      <div class="glass-a tbl-scroll fi d1">
+        <table class="stbl atbl">
+          <thead><tr><th>#</th><th>曲名</th></tr></thead>
+          <tbody>
+            <tr><td><span class="nb a">1</span></td><td class="tname">アパシー <button class="ytb a" onclick="playA('PxJ79DOBrMY','アパシー')" title="MV">▶</button></td></tr>
+            <tr><td><span class="nb a">2</span></td><td class="tname">Casablanca</td></tr>
+            <tr><td><span class="nb a">3</span></td><td class="tname">ネオワビシイ <button class="ytb a" onclick="playA('ALOjEnv8ecg','ネオワビシイ')" title="MV">▶</button></td></tr>
+            <tr><td><span class="nb a">4</span></td><td class="tname">BAQN <span class="badge blive">ライブ先行</span> <button class="ytb a" onclick="playA('KDP8H6lN8oA','BAQN')" title="MV">▶</button></td></tr>
+            <tr><td><span class="nb a">5</span></td><td class="tname">魔法はスパイス <span class="badge bnew">エコバ初披露</span> <button class="ytb a" onclick="playA('_inZeRpW3v0','魔法はスパイス')" title="MV">▶</button></td></tr>
+            <tr><td><span class="nb a">6</span></td><td class="tname">フラジャイルナイト <button class="ytb a" onclick="playA('CWolvJc2zTI','フラジャイル・ナイト')" title="MV">▶</button></td></tr>
+            <tr><td><span class="nb a">7</span></td><td class="tname">イエロートイ <button class="ytb a" onclick="playA('T5w8cMEWrwo','イエロートイ')" title="MV">▶</button></td></tr>
+            <tr><td><span class="nb a">8</span></td><td class="tname">水中少女 <button class="ytb a" onclick="playA('O6Wkuto3uHM','水中少女')" title="Live">▶</button></td></tr>
+            <tr><td><span class="nb a">9</span></td><td class="tname">リピート <button class="ytb a" onclick="playA('0eF6b9pPclE','リピート')" title="Live">▶</button></td></tr>
+            <tr><td><span class="nb a">10</span></td><td class="tname">サラダボウル <button class="ytb a" onclick="playA('W23msN5N66Y','サラダボウル')" title="MV">▶</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="nbox a fi d2">
+        <ul>
+          <li>BAQNと魔法はスパイスは当時音源未公開</li>
+          <li>BAQNはこれより前にライブで披露済み、魔法はスパイスはエコバで初披露</li>
+          <li>人気曲が大半を占め、新曲が1〜2曲披露される傾向</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 披露率チャート -->
+    <div class="sub">
+      <h3 class="sub-h a fi">フェス披露率チャート</h3>
+      <div class="chart-outer glass-a fi d1">
+        <div class="chart-scroll" style="max-height:540px;">
+          <div style="position:relative;height:640px;"><canvas id="aoooChart"></canvas></div>
+        </div>
+      </div>
+      <div class="nbox a fi d2">✦ 披露率50%以上の11曲から8〜9曲が選ばれる可能性が非常に高い。残り1〜2枠は新曲またはマイナー曲か？</div>
+    </div>
+
+    <!-- 新曲リリース情報 -->
+    <div class="sub">
+      <h3 class="sub-h a fi">新曲リリース情報</h3>
+      <div class="rel-grid fi d1">
+        <div class="rel-card glass-a a">
+          <div class="rel-type a">2nd Album</div>
+          <div class="rel-icon">💿</div>
+          <div class="rel-title">Rooom</div>
+          <div class="rel-date">2026年6月3日 リリース</div>
+          <div class="rel-desc">Aoooの2ndアルバム。フェス当日時点ではリリース前のプレ期間。先行曲の披露が見込まれる。</div>
+        </div>
+        <div class="rel-card glass-a a">
+          <div class="rel-type a">New Single &nbsp;<span class="badge bnew">配信済み</span></div>
+          <div class="rel-icon">🎵</div>
+          <div class="rel-title">クエスチョン</div>
+          <div class="rel-date">2026年3月25日 配信リリース</div>
+          <div class="rel-desc">2ndアルバム『Rooom』先行リリース曲。フェスでの披露は確定的。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2026 セトリ予想 -->
+    <div class="sub" id="aooo-pred-sec">
+      <h3 class="sub-h a fi">2026年 セトリ予想 ★</h3>
+      <div class="glass-a fi d1" style="border-radius:16px;overflow:hidden;">
+        <div class="tbl-scroll">
+          <table class="stbl atbl">
+            <thead><tr><th style="width:44px;">#</th><th>曲名</th><th>選定理由</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><span class="nb a">1</span></td>
+                <td class="tname">サラダボウル <button class="ytb a" onclick="playA('W23msN5N66Y','サラダボウル')" title="MV">▶</button></td>
+                <td class="treason">直近のフェスは大体サラダボウルとCRAZZZYの2曲から始まる（順不同）</td>
+              </tr>
+              <tr>
+                <td><span class="nb a">2</span></td>
+                <td class="tname">CRAZZZY <button class="ytb a" onclick="playA('atYx9JPPd_Y','CRAZZZY')" title="MV">▶</button></td>
+                <td class="treason">同上</td>
+              </tr>
+              <tr>
+                <td><span class="nb a">3</span></td>
+                <td class="tname">イエロートイ <button class="ytb a" onclick="playA('T5w8cMEWrwo','イエロートイ')" title="MV">▶</button> or ネオワビシイ <button class="ytb a" onclick="playA('ALOjEnv8ecg','ネオワビシイ')" title="MV">▶</button></td>
+                <td class="treason">フェス常連だったが最近セトリ落ちが目立つためどちらかのみか？</td>
+              </tr>
+              <tr>
+                <td><span class="nb a">4</span></td>
+                <td class="tname">Geeek <button class="ytb a" onclick="playA('HLwUNAW9-LI','Geeek')" title="MV">▶</button> or フラジャイル・ナイト <button class="ytb a" onclick="playA('CWolvJc2zTI','フラジャイル・ナイト')" title="MV">▶</button></td>
+                <td class="treason">やまもとひかる作曲が１つもないのはおかしいのでどちらか採用</td>
+              </tr>
+              <tr>
+                <td><span class="nb a">5</span></td>
+                <td class="tname">BAQN <button class="ytb a" onclick="playA('KDP8H6lN8oA','BAQN')" title="MV">▶</button></td>
+                <td class="treason">常連曲なので言うまでもなし</td>
+              </tr>
+              <tr>
+                <td><span class="nb a">6</span></td>
+                <td class="tname">魔法はスパイス <button class="ytb a" onclick="playA('_inZeRpW3v0','魔法はスパイス')" title="MV">▶</button></td>
+                <td class="treason">クエスチョンの繋ぎとしてここの位置にくるかと（昨年エコバ初披露）</td>
+              </tr>
+              <tr>
+                <td><span class="nb a">7</span></td>
+                <td class="tname">クエスチョン <button class="ytb a" onclick="playA('s9l3LsKxJCQ','クエスチョン')" title="MV">▶</button></td>
+                <td class="treason">新曲枠、必ずやる。MCを挟むはずなのでこの辺かと。</td>
+              </tr>
+              <tr>
+                <td><span class="nb a">8</span></td>
+                <td class="tname">スターサイン <button class="ytb a" onclick="playA('dGhdQEUnHbw','スターサイン')" title="MV">▶</button></td>
+                <td class="treason">これまでセトリ落ちなし。</td>
+              </tr>
+              <tr>
+                <td><span class="nb a">9</span></td>
+                <td class="tname">水中少女 <button class="ytb a" onclick="playA('O6Wkuto3uHM','水中少女')" title="Live">▶</button> or Casablanca or リピート <button class="ytb a" onclick="playA('0eF6b9pPclE','リピート')" title="Live">▶</button></td>
+                <td class="treason">フェスにおけるマイナー枠から1曲くると予想</td>
+              </tr>
+              <tr>
+                <td><span class="nb a">10</span></td>
+                <td class="tname">Yankeee <button class="ytb a" onclick="playA('TznkwLWqYh0','Yankeee')" title="MV">▶</button></td>
+                <td class="treason">夜露死苦〜〜〜！！</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="flash-box fi d2">
+        <p class="flash-text">
+          <strong style="color:var(--a);">⚡ FLASH FORWARD:</strong> 僅かな可能性でFLASH FORWARDあり<br>
+          <span style="opacity:.72;font-size:.84em;">日没が迫って暗くなりかけでFLASH FORWARDきたらやばい</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ SECTION TRANSITION ══════ -->
+<div class="sec-trans"></div>
+
+<!-- ══════════════════════════════════
+     NOMELON NOLEMON SECTION
+══════════════════════════════════ -->
+<section id="nomelon">
+  <div class="wrap">
+    <div class="secnum-wrap"><div class="secnum" style="-webkit-text-stroke:1px rgba(99,102,241,.07);">02</div></div>
+
+    <div class="artist-hdr fi">
+      <h2 class="sec-h artist-nm nm-name">NOMELON<br>NOLEMON</h2>
+      <div class="abadge-row">
+        <span class="abadge n">4.4 SAT</span>
+        <span class="abadge n">14:50 – 15:55</span>
+        <span class="abadge n">65 MIN</span>
+      </div>
+    </div>
+
+    <!-- YouTube Player -->
+    <div class="sub yt-wrap fi">
+      <div class="yt-now n" id="n-now">▶ 曲を選んで予習しよう</div>
+      <div class="yt-frame glass-n" id="n-frame">
+        <div class="yt-ph" id="n-ph"><div class="yt-ph-icon">▶</div><div>下のセトリから曲を選ぶとここで再生</div></div>
+        <div class="yt-player-wrap" id="n-player-wrap"></div>
+      </div>
+    </div>
+
+    <!-- 時間枠情報 -->
+    <div class="sub">
+      <h3 class="sub-h n fi">時間枠情報</h3>
+      <div class="card-row fi d1">
+        <div class="ic glass-n n"><div class="ic-lbl n">Start Time</div><div class="ic-v">14:50</div><div class="ic-s">次アーティスト開始: 15:55</div></div>
+        <div class="ic glass-n n"><div class="ic-lbl n">Set Length</div><div class="ic-v">65 MIN</div><div class="ic-s">2025年と同じ枠</div></div>
+        <div class="ic glass-n n"><div class="ic-lbl n">Expected</div><div class="ic-v">約9曲</div><div class="ic-s">2025年実績: 9曲</div></div>
+      </div>
+    </div>
+
+    <!-- 2025年セトリ -->
+    <div class="sub" id="nm-chart-sec">
+      <h3 class="sub-h n fi">2025年 Echoes Baa セトリ実績</h3>
+      <div class="glass-n tbl-scroll fi d1">
+        <table class="stbl ntbl">
+          <thead><tr><th>#</th><th>曲名</th></tr></thead>
+          <tbody>
+            <tr><td><span class="nb n">1</span></td><td class="tname">INAZMA <button class="ytb n" onclick="playN('Lzrd6tehdmw','INAZMA')" title="MV">▶</button></td></tr>
+            <tr><td><span class="nb n">2</span></td><td class="tname">透明水曜日 <button class="ytb n" onclick="playN('Szc1LaN3FsE','透明水曜日')" title="MV">▶</button></td></tr>
+            <tr><td><span class="nb n">3</span></td><td class="tname">rem swimming <button class="ytb n" onclick="playN('Sex_F47Sh0Q','rem swimming')" title="MV">▶</button></td></tr>
+            <tr><td><span class="nb n">4</span></td><td class="tname">どうにかなっちゃいそう！ <button class="ytb n" onclick="playN('P7nMc5vHCb0','どうにかなっちゃいそう！')" title="MV">▶</button></td></tr>
+            <tr><td><span class="nb n">5</span></td><td class="tname">イエロウ <button class="ytb n" onclick="playN('RwbC9oGAwY4','イエロウ')" title="MV">▶</button></td></tr>
+            <tr><td><span class="nb n">6</span></td><td class="tname">ミッドナイト・リフレクション <button class="ytb n" onclick="playN('73stcwZC9vk','ミッドナイト・リフレクション')" title="MV">▶</button></td></tr>
+            <tr><td><span class="nb n">7</span></td><td class="tname">SUGAR <button class="ytb n" onclick="playN('2kcrnKPh2Eg','SUGAR')" title="MV">▶</button></td></tr>
+            <tr><td><span class="nb n">8</span></td><td class="tname">night draw <button class="ytb n" onclick="playN('NJ6i8hhYjnY','night draw')" title="MV">▶</button></td></tr>
+            <tr><td><span class="nb n">9</span></td><td class="tname">SAYONARA MAYBE <button class="ytb n" onclick="playN('av9aKHeOKK4','SAYONARA MAYBE')" title="MV">▶</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="nbox n fi d2">
+        <ul>
+          <li>新アルバムの1曲目『カイカ』や『ミテミテ』が短めの曲時間のため1曲増える可能性あり</li>
+          <li>今回は9曲で予想</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 披露率チャート -->
+    <div class="sub">
+      <h3 class="sub-h n fi">フェス披露率チャート</h3>
+      <div class="chart-outer glass-n fi d1">
+        <div class="chart-scroll" style="max-height:700px;">
+          <div style="position:relative;height:952px;"><canvas id="nmChart"></canvas></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1曲目とトリのデータ -->
+    <div class="sub">
+      <h3 class="sub-h n fi">1曲目 &amp; トリ データ</h3>
+      <div class="say-wrap fi d1">
+        <div class="say-text">圧倒的 SAYONARA MAYBE...!!!</div>
+        <div class="say-sub">トリ（ラスト曲）登場回数 <span class="say-cnt">10回</span> ／ 他はcocoon・KILLER MOONが各1回のみ</div>
+      </div>
+      <div class="rank-grid fi d2">
+        <div class="rank-card glass-n">
+          <div class="rank-card-title">1曲目 ランキング</div>
+          <div class="rank-item"><span class="rname">SUGAR</span><span class="rcnt">3回</span></div>
+          <div class="rank-item"><span class="rname">INAZMA</span><span class="rcnt">2回</span></div>
+          <div class="rank-item"><span class="rname">rem swimming</span><span class="rcnt">2回</span></div>
+          <div class="rank-item"><span class="rname">night draw</span><span class="rcnt">1回</span></div>
+          <div class="rank-item"><span class="rname">moonshadow</span><span class="rcnt">1回</span></div>
+          <div class="rank-item"><span class="rname">どうにかなっちゃいそう！</span><span class="rcnt">1回</span></div>
+          <div class="rank-item"><span class="rname">カイカ</span><span class="rcnt">1回</span></div>
+          <div class="rank-item"><span class="rname">ミッドナイト・リフレクション</span><span class="rcnt">1回</span></div>
+        </div>
+        <div class="rank-card glass-n">
+          <div class="rank-card-title">トリ（ラスト曲）ランキング</div>
+          <div class="rank-item sayr"><span class="rname">SAYONARA MAYBE</span><span class="rcnt" style="font-size:1.5rem;">10回</span></div>
+          <div class="rank-item"><span class="rname">cocoon</span><span class="rcnt">1回</span></div>
+          <div class="rank-item"><span class="rname">KILLER MOON</span><span class="rcnt">1回</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 過去フェスセトリ -->
+    <div class="sub">
+      <h3 class="sub-h n fi">過去のフェスセトリ一覧</h3>
+      <div class="tab-nav fi d1">
+        <button class="tabbtn active" data-tab="sanuki">SANUKI 2025</button>
+        <button class="tabbtn" data-tab="hangeki">ハンゲキ 2025</button>
+        <button class="tabbtn" data-tab="echoes25">Echoes Baa 2025</button>
+        <button class="tabbtn" data-tab="nighthike">NIGHT HIKE 2025</button>
+        <button class="tabbtn" data-tab="wonderlivet">WONDERLIVET 2025</button>
+        <button class="tabbtn" data-tab="afa">AFA Singapore 2025</button>
+        <button class="tabbtn" data-tab="cdj">CDJ 25/26</button>
+        <button class="tabbtn" data-tab="pentatonic">PENTATONIC</button>
+      </div>
+
+      <div id="tab-sanuki" class="tab-pane active fi d2"><div class="past-card glass-n">
+        <div class="past-meta">SANUKI ROCK FESTIVAL 2025 — 7曲</div>
+        <ul class="track-list">
+          <li class="tli"><span class="tln">01</span><span>SUGAR <button class="ytb n" onclick="playN('2kcrnKPh2Eg','SUGAR')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">02</span><span>ハイド・アンド・シーク <button class="ytb n" onclick="playN('50aJ6AtNp0o','ハイド・アンド・シーク')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">03</span><span>どうにかなっちゃいそう！ <button class="ytb n" onclick="playN('P7nMc5vHCb0','どうにかなっちゃいそう！')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">04</span><span>INAZMA <button class="ytb n" onclick="playN('Lzrd6tehdmw','INAZMA')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">05</span><span>ミッドナイト・リフレクション <button class="ytb n" onclick="playN('73stcwZC9vk','ミッドナイト・リフレクション')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">06</span><span>night draw</span></li>
+          <li class="tli"><span class="tln">07</span><span>SAYONARA MAYBE</span></li>
+        </ul>
+      </div></div>
+
+      <div id="tab-hangeki" class="tab-pane"><div class="past-card glass-n">
+        <div class="past-meta">ハンゲキフェス 2025 — 9曲</div>
+        <ul class="track-list">
+          <li class="tli"><span class="tln">01</span><span>SUGAR <button class="ytb n" onclick="playN('2kcrnKPh2Eg','SUGAR')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">02</span><span>ハイド・アンド・シーク <button class="ytb n" onclick="playN('50aJ6AtNp0o','ハイド・アンド・シーク')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">03</span><span>どうにかなっちゃいそう！ <button class="ytb n" onclick="playN('P7nMc5vHCb0','どうにかなっちゃいそう！')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">04</span><span>ダダ <button class="ytb n" onclick="playN('0PRHV6xKs3g','ダダ')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">05</span><span>INAZMA <button class="ytb n" onclick="playN('Lzrd6tehdmw','INAZMA')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">06</span><span>ミッドナイト・リフレクション <button class="ytb n" onclick="playN('73stcwZC9vk','ミッドナイト・リフレクション')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">07</span><span>水光接天 <button class="ytb n" onclick="playN('f6krfHqG-iQ','水光接天')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">08</span><span>night draw</span></li>
+          <li class="tli"><span class="tln">09</span><span>SAYONARA MAYBE</span></li>
+        </ul>
+      </div></div>
+
+      <div id="tab-echoes25" class="tab-pane"><div class="past-card glass-n">
+        <div class="past-meta">Echoes Baa 2025 — 9曲</div>
+        <ul class="track-list">
+          <li class="tli"><span class="tln">01</span><span>INAZMA <button class="ytb n" onclick="playN('Lzrd6tehdmw','INAZMA')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">02</span><span>透明水曜日 <button class="ytb n" onclick="playN('Szc1LaN3FsE','透明水曜日')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">03</span><span>rem swimming</span></li>
+          <li class="tli"><span class="tln">04</span><span>どうにかなっちゃいそう！ <button class="ytb n" onclick="playN('P7nMc5vHCb0','どうにかなっちゃいそう！')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">05</span><span>イエロウ <button class="ytb n" onclick="playN('RwbC9oGAwY4','イエロウ')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">06</span><span>ミッドナイト・リフレクション <button class="ytb n" onclick="playN('73stcwZC9vk','ミッドナイト・リフレクション')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">07</span><span>SUGAR <button class="ytb n" onclick="playN('2kcrnKPh2Eg','SUGAR')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">08</span><span>night draw</span></li>
+          <li class="tli"><span class="tln">09</span><span>SAYONARA MAYBE</span></li>
+        </ul>
+      </div></div>
+
+      <div id="tab-nighthike" class="tab-pane"><div class="past-card glass-n">
+        <div class="past-meta">NIGHT HIKE 2025 — 11曲</div>
+        <ul class="track-list">
+          <li class="tli"><span class="tln">01</span><span>rem swimming</span></li>
+          <li class="tli"><span class="tln">02</span><span>ハイド・アンド・シーク <button class="ytb n" onclick="playN('50aJ6AtNp0o','ハイド・アンド・シーク')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">03</span><span>SUGAR <button class="ytb n" onclick="playN('2kcrnKPh2Eg','SUGAR')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">04</span><span>HALO <button class="ytb n" onclick="playN('NgwYnjNx1O4','HALO')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">05</span><span>ゴー・トゥ・ヘヴン</span></li>
+          <li class="tli"><span class="tln">06</span><span>NAZONAZO</span></li>
+          <li class="tli"><span class="tln">07</span><span>ダダ <button class="ytb n" onclick="playN('0PRHV6xKs3g','ダダ')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">08</span><span>フォニイ</span></li>
+          <li class="tli"><span class="tln">09</span><span>どうにかなっちゃいそう！ <button class="ytb n" onclick="playN('P7nMc5vHCb0','どうにかなっちゃいそう！')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">10</span><span>ミッドナイト・リフレクション <button class="ytb n" onclick="playN('73stcwZC9vk','ミッドナイト・リフレクション')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">11</span><span>SAYONARA MAYBE</span></li>
+        </ul>
+      </div></div>
+
+      <div id="tab-wonderlivet" class="tab-pane"><div class="past-card glass-n">
+        <div class="past-meta">WONDERLIVET 2025 — 7曲</div>
+        <ul class="track-list">
+          <li class="tli"><span class="tln">01</span><span>INAZMA <button class="ytb n" onclick="playN('Lzrd6tehdmw','INAZMA')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">02</span><span>ハイド・アンド・シーク <button class="ytb n" onclick="playN('50aJ6AtNp0o','ハイド・アンド・シーク')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">03</span><span>どうにかなっちゃいそう！ <button class="ytb n" onclick="playN('P7nMc5vHCb0','どうにかなっちゃいそう！')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">04</span><span>HALO <button class="ytb n" onclick="playN('NgwYnjNx1O4','HALO')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">05</span><span>ミッドナイト・リフレクション <button class="ytb n" onclick="playN('73stcwZC9vk','ミッドナイト・リフレクション')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">06</span><span>水光接天 <button class="ytb n" onclick="playN('f6krfHqG-iQ','水光接天')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">07</span><span>SAYONARA MAYBE</span></li>
+        </ul>
+      </div></div>
+
+      <div id="tab-afa" class="tab-pane"><div class="past-card glass-n">
+        <div class="past-meta">Anime Festival Asia Singapore 2025 — 10曲</div>
+        <ul class="track-list">
+          <li class="tli"><span class="tln">01</span><span>rem swimming</span></li>
+          <li class="tli"><span class="tln">02</span><span>ハイド・アンド・シーク <button class="ytb n" onclick="playN('50aJ6AtNp0o','ハイド・アンド・シーク')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">03</span><span>SUGAR <button class="ytb n" onclick="playN('2kcrnKPh2Eg','SUGAR')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">04</span><span>HALO <button class="ytb n" onclick="playN('NgwYnjNx1O4','HALO')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">05</span><span>きえない <button class="ytb n" onclick="playN('rCKcLqsDMuw','きえない')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">06</span><span>水光接天 <button class="ytb n" onclick="playN('f6krfHqG-iQ','水光接天')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">07</span><span>どうにかなっちゃいそう！ <button class="ytb n" onclick="playN('P7nMc5vHCb0','どうにかなっちゃいそう！')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">08</span><span>シーグラス <button class="ytb n" onclick="playN('0O8Xla5zCj0','シーグラス')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">09</span><span>ミッドナイト・リフレクション <button class="ytb n" onclick="playN('73stcwZC9vk','ミッドナイト・リフレクション')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">10</span><span>SAYONARA MAYBE</span></li>
+        </ul>
+      </div></div>
+
+      <div id="tab-cdj" class="tab-pane"><div class="past-card glass-n">
+        <div class="past-meta">COUNTDOWN JAPAN 25/26 — 7曲</div>
+        <ul class="track-list">
+          <li class="tli"><span class="tln">01</span><span>どうにかなっちゃいそう！ <button class="ytb n" onclick="playN('P7nMc5vHCb0','どうにかなっちゃいそう！')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">02</span><span>ハイド・アンド・シーク <button class="ytb n" onclick="playN('50aJ6AtNp0o','ハイド・アンド・シーク')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">03</span><span>シーグラス <button class="ytb n" onclick="playN('0O8Xla5zCj0','シーグラス')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">04</span><span>ミッドナイト・リフレクション <button class="ytb n" onclick="playN('73stcwZC9vk','ミッドナイト・リフレクション')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">05</span><span>night draw</span></li>
+          <li class="tli"><span class="tln">06</span><span>INAZMA <button class="ytb n" onclick="playN('Lzrd6tehdmw','INAZMA')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">07</span><span>SAYONARA MAYBE</span></li>
+        </ul>
+      </div></div>
+
+      <div id="tab-pentatonic" class="tab-pane"><div class="past-card glass-n">
+        <div class="past-meta">PENTATONIC — 8曲</div>
+        <ul class="track-list">
+          <li class="tli"><span class="tln">01</span><span>ミッドナイト・リフレクション <button class="ytb n" onclick="playN('73stcwZC9vk','ミッドナイト・リフレクション')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">02</span><span>どうにかなっちゃいそう！ <button class="ytb n" onclick="playN('P7nMc5vHCb0','どうにかなっちゃいそう！')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">03</span><span>ダダ <button class="ytb n" onclick="playN('0PRHV6xKs3g','ダダ')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">04</span><span>SUGAR <button class="ytb n" onclick="playN('2kcrnKPh2Eg','SUGAR')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">05</span><span>フォニイ</span></li>
+          <li class="tli"><span class="tln">06</span><span>INAZMA <button class="ytb n" onclick="playN('Lzrd6tehdmw','INAZMA')" title="MV">▶</button></span></li>
+          <li class="tli"><span class="tln">07</span><span>night draw</span></li>
+          <li class="tli"><span class="tln">08</span><span>SAYONARA MAYBE</span></li>
+        </ul>
+      </div></div>
+
+      <div class="att-tbl-w fi">
+        <table class="att-tbl glass-n">
+          <thead><tr><th>曲名（皆勤賞除く）</th><th>フェス出演回数</th></tr></thead>
+          <tbody>
+            <tr><td>ハイド・アンド・シーク</td><td class="acnt">6回</td></tr>
+            <tr><td>INAZMA</td><td class="acnt">5回</td></tr>
+            <tr><td>SUGAR</td><td class="acnt">5回</td></tr>
+            <tr><td>night draw</td><td class="acnt">5回</td></tr>
+            <tr><td>水光接天</td><td style="font-family:var(--fm);">3回</td></tr>
+            <tr><td>rem swimming</td><td style="font-family:var(--fm);">3回</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 分析サマリー -->
+    <div class="sub">
+      <h3 class="sub-h n fi">分析サマリー</h3>
+      <div class="an-grid fi d1">
+        <div class="an-card glass-n">
+          <div class="an-title n">選曲割合と回数から</div>
+          <ul class="an-ul">
+            <li><strong>SAYONARA MAYBE、どうにかなっちゃいそう！、ミッドナイト・リフレクション</strong>は絶対選ばれる</li>
+            <li><strong style="color:var(--nacc);">新アルバムからはKILLER MOONとミテミテは固い</strong> → 要予習</li>
+            <li>残り4曲がどうなるかが焦点</li>
+          </ul>
+        </div>
+        <div class="an-card glass-n">
+          <div class="an-title n">フェスセトリの傾向</div>
+          <ul class="an-ul">
+            <li>セトリにかなり偏りあり</li>
+            <li>皆勤賞以外で7割近い出席率の4曲のどれがセトリ落ちするか</li>
+            <li>一曲目はばらつきあるが、出席率6割以上の人気曲で構成される傾向</li>
+            <li>カイカは1曲目枠として最適だがマイナー枠になる可能性</li>
+          </ul>
+          <p class="an-note">「SAYONARA MAYBEがSAYONARAすぎる。」</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2026 セトリ予想 -->
+    <div class="sub" id="nm-pred-sec">
+      <h3 class="sub-h n fi">2026年 セトリ予想 ★</h3>
+      <div class="glass-n fi d1" style="border-radius:16px;overflow:hidden;">
+        <div class="tbl-scroll">
+          <table class="stbl ntbl" style="min-width:620px;">
+            <thead>
+              <tr>
+                <th style="width:44px;">#</th>
+                <th style="color:var(--n2);">ガチ予想</th>
+                <th>選定理由</th>
+                <th style="color:var(--nacc);">サブ予想</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="nb n">1</span></td>
+                <td class="tname">SAYONARA MAYBE <button class="ytb n" onclick="playN('av9aKHeOKK4','SAYONARA MAYBE')" title="MV">▶</button></td>
+                <td class="treason">大穴予想に見せかけたガチ予想。こいつがトリじゃないなら序盤しかない。</td>
+                <td class="sub-pred">ミッドナイト・リフレクション <button class="ytb n" onclick="playN('73stcwZC9vk','ミッドナイト・リフレクション')" title="MV">▶</button> / カイカ <button class="ytb n" onclick="playN('HR87CI_uaVo','カイカ')" title="Live">▶</button></td>
+              </tr>
+              <tr>
+                <td><span class="nb n">2</span></td>
+                <td class="tname">ミテミテ <button class="ytb n" onclick="playN('E4BflGhqZb8','ミテミテ')" title="MV">▶</button></td>
+                <td class="treason">SAYONARA MAYBEのあとはイントロの短い曲が合うと思ってる。中毒性激高曲。みきまりのダンスに注目。</td>
+                <td class="sub-pred">INAZMA <button class="ytb n" onclick="playN('Lzrd6tehdmw','INAZMA')" title="MV">▶</button> / rem swimming <button class="ytb n" onclick="playN('Sex_F47Sh0Q','rem swimming')" title="MV">▶</button></td>
+              </tr>
+              <tr>
+                <td><span class="nb n">3</span></td>
+                <td class="tname">線香金魚 <button class="ytb n" onclick="playN('Wt_TSC-1Umg','線香金魚')" title="MV">▶</button></td>
+                <td class="treason">みきまり作曲枠兼マイナー枠兼個人的感情爆乗せ予想枠。聞きてえよ頼む。</td>
+                <td class="sub-pred">ダダ <button class="ytb n" onclick="playN('0PRHV6xKs3g','ダダ')" title="MV">▶</button> / タッチ（来たら気絶します）</td>
+              </tr>
+              <tr>
+                <td><span class="nb n">4</span></td>
+                <td class="tname">SUGAR <button class="ytb n" onclick="playN('2kcrnKPh2Eg','SUGAR')" title="MV">▶</button></td>
+                <td class="treason">俺はこいつが居ないセトリを考えられないっ…!!!まじでライブ映え最強曲。</td>
+                <td class="sub-pred">syrup / KILLER MOON <button class="ytb n" onclick="playN('WQ_l7Us5QvI','KILLER MOON')" title="MV">▶</button></td>
+              </tr>
+              <tr>
+                <td><span class="nb n">5</span></td>
+                <td class="tname">水光接天 <button class="ytb n" onclick="playN('f6krfHqG-iQ','水光接天')" title="MV">▶</button></td>
+                <td class="treason">実はあまり歌われてない曲。ワンマン込で去年は4回で日本で最後に歌ったのは10月。</td>
+                <td class="sub-pred">シーグラス <button class="ytb n" onclick="playN('0O8Xla5zCj0','シーグラス')" title="MV">▶</button> / HALO <button class="ytb n" onclick="playN('NgwYnjNx1O4','HALO')" title="MV">▶</button></td>
+              </tr>
+              <tr>
+                <td><span class="nb n">6</span></td>
+                <td class="tname">どうにかなっちゃいそう！ <button class="ytb n" onclick="playN('P7nMc5vHCb0','どうにかなっちゃいそう！')" title="MV">▶</button></td>
+                <td class="treason">ワンマンでは終盤戦始まりの鉄板曲。バンドメンバー紹介からの流れが宇宙一大好きなのでフェスでもやってほしい。</td>
+                <td class="sub-pred">どうにかなっちゃいそう！</td>
+              </tr>
+              <tr>
+                <td><span class="nb n">7</span></td>
+                <td class="tname">ミッドナイト・リフレクション <button class="ytb n" onclick="playN('73stcwZC9vk','ミッドナイト・リフレクション')" title="MV">▶</button></td>
+                <td class="treason">どうにかなっちゃいそう！のあとに来がち。この流れ大好きだけどなんか変えてきそうな気もする。</td>
+                <td class="sub-pred">night draw <button class="ytb n" onclick="playN('NJ6i8hhYjnY','night draw')" title="MV">▶</button> / ハイド・アンド・シーク <button class="ytb n" onclick="playN('50aJ6AtNp0o','ハイド・アンド・シーク')" title="MV">▶</button></td>
+              </tr>
+              <tr>
+                <td><span class="nb n">8</span></td>
+                <td class="tname">I THINK</td>
+                <td class="treason">新曲兼マイナー枠。作詞作曲を二人で行っている曲なので思い入れは強いか。観客に歌わせるパートあり。</td>
+                <td class="sub-pred">I THINK</td>
+              </tr>
+              <tr>
+                <td><span class="nb n">9</span></td>
+                <td class="tname">KILLER MOON <button class="ytb n" onclick="playN('WQ_l7Us5QvI','KILLER MOON')" title="MV">▶</button></td>
+                <td class="treason">最新アルバムの中で一番人気の曲。レスポンスが多く盛り上がる曲なのでトリとして最適。騒ぐぞおおおおお</td>
+                <td class="sub-pred">SAYONARA MAYBE</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="memo-box fi d2">
+        <p>枠足りねえよ3時間やってくれ。</p>
+        <p>ガチ予想はかなり最新のワンマンのセトリに寄ったかも…良すぎただけに仕方ない。</p>
+        <p>プレイリストまで作って聞いたうえでガチ予想は決めた。全然まだ悩んでるけど</p>
+        <p>ここにある曲で知らない曲は是非予習してきてね</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════
+     ACCESS
+══════════════════════════════════ -->
+<section id="access">
+  <div class="wrap">
+    <div class="secnum-wrap"><div class="secnum" style="-webkit-text-stroke:1px rgba(56,189,248,.055);">03</div></div>
+    <p class="eyebrow fi">Venue &amp; Access</p>
+    <h2 class="sec-h fi d1" style="background:linear-gradient(90deg,#38bdf8,#818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:3rem;">ACCESS</h2>
+    <div class="acc-grid fi d2">
+      <div class="acc-card glass" style="border-color:rgba(56,189,248,.12);">
+        <div class="acc-title">横浜赤レンガ倉庫<br>赤レンガパーク特設会場</div>
+        <div class="acc-addr">〒231-0001 神奈川県横浜市中区新港1-1</div>
+        <ul class="acc-routes">
+          <li>JR京浜東北・根岸線 / 横浜市営地下鉄ブルーライン<br>「桜木町駅」または「関内駅」より徒歩約15分</li>
+          <li>みなとみらい線「馬車道駅」または「日本大通り駅」より徒歩約6分</li>
+          <li>みなとみらい線「みなとみらい駅」より徒歩約12分</li>
+        </ul>
+        <div class="btns">
+          <a href="https://maps.app.goo.gl/bWDCZWXPxp2HNKnk8" target="_blank" rel="noopener" class="btn a">▶ Google Map</a>
+          <a href="https://central-fest.com/s/central/page/eventechoesbaa_2026" target="_blank" rel="noopener" class="btn n">▶ 公式サイト</a>
+        </div>
+        <div class="map-wrap">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3248.1966073844543!2d139.64031147551643!3d35.44841397252305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60185d5c5d3c7679%3A0x99e80fcb8a55f89e!2z5qCq5byP5Lya56S-6LWW5LqL5byA5YiX5pu45L2T!5e0!3m2!1sja!2sjp!4v1680000000000!5m2!1sja!2sjp" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+      <div class="acc-card glass" style="border-color:rgba(99,102,241,.12);">
+        <div class="acc-title">イベント情報</div>
+        <div class="acc-addr" style="line-height:2.1;">
+          <div>📅 2026年4月4日(土) &amp; 4月5日(日)</div>
+          <div>🕑 OPEN 11:00 / START 12:30</div>
+          <div>📍 横浜赤レンガ倉庫 赤レンガパーク特設会場</div>
+        </div>
+        <div style="border-top:1px solid var(--border);padding-top:1.1rem;margin-top:1rem;">
+          <div style="font-family:var(--fm);font-size:.62rem;letter-spacing:.22em;color:var(--w3);text-transform:uppercase;margin-bottom:.75rem;">出演</div>
+          <div style="display:flex;flex-direction:column;gap:.6rem;">
+            <div style="background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.2);border-radius:9px;padding:.7rem 1rem;">
+              <div style="font-family:var(--fm);font-size:.6rem;color:var(--n2);letter-spacing:.2em;margin-bottom:.2rem;">4/4 SAT — Day 1</div>
+              <div style="font-weight:700;font-size:.97rem;">NOMELON NOLEMON</div>
+            </div>
+            <div style="background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.2);border-radius:9px;padding:.7rem 1rem;">
+              <div style="font-family:var(--fm);font-size:.6rem;color:var(--a);letter-spacing:.2em;margin-bottom:.2rem;">4/5 SUN — Day 2 / 12:30〜</div>
+              <div style="font-weight:700;font-size:.97rem;">Aooo</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ SPECIAL THANKS ══════ -->
+<section id="thanks" class="sec">
+  <div class="wrap">
+    <p class="eyebrow fi">— With Love —</p>
+    <h2 class="sec-h fi d1" style="background:linear-gradient(135deg,#38bdf8,#818cf8,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">SPECIAL THANKS</h2>
+    <p class="thanks-lead fi d2">
+      このページを一緒に楽しんでくれる、大切な人へ。<br>
+      最高のライブになりますように。
+    </p>
+    <div class="thanks-grid fi d3">
+      <div class="tcard ta">
+        <div class="tcard-label">Special Thanks</div>
+        <div class="tcard-init">S.N</div>
+        <span class="tcard-star">✦ ✦ ✦</span>
+      </div>
+      <div class="tcard tn">
+        <div class="tcard-label">Special Thanks</div>
+        <div class="tcard-init">H.N</div>
+        <span class="tcard-star">✦ ✦ ✦</span>
+      </div>
+    </div>
+    <div class="thanks-bottom fi d4">Made with love for Echoes Baa 2026</div>
+  </div>
+</section>
+
+<!-- ══════ FOOTER ══════ -->
+<footer>
+  <div class="foot-logo">Echoes Baa 2026</div>
+  <div class="foot-note">友人用ガイドページ — Echoes Baa 2026</div>
+  <a href="https://central-fest.com/s/central/page/eventechoesbaa_2026" target="_blank" rel="noopener" class="foot-link">公式サイトへ →</a>
+  <div class="foot-copy">このページはファンによる非公式ガイドです。情報は変更になる場合があります。</div>
+</footer>
+
+<!-- YouTube IFrame API (BGM) -->
+<script src="https://www.youtube.com/iframe_api"></script>
+
+<script>
+// ════════════════════════════════════
+//  SPLASH
+// ════════════════════════════════════
+const splash = document.getElementById('splash');
+let bgmInited = false;
+
+document.getElementById('sp-enter').addEventListener('click', () => {
+  splash.classList.add('hide');
+  document.body.classList.remove('locked');
+  document.getElementById('bgm-mini').style.display = '';
+  setTimeout(() => { splash.style.display = 'none'; }, 900);
+  if (!bgmInited) { bgmInited = true; startBGMPlayback(); initPreviewPlayers(); }
+});
+
+function returnToSplash() {
+  stopPreview();
+  document.body.classList.add('locked');
+  splash.style.display = '';
+  splash.style.opacity = '';
+  requestAnimationFrame(() => {
+    splash.classList.remove('hide');
+  });
+  document.getElementById('bgm-mini').style.display = 'none';
+  window.scrollTo({ top: 0, behavior: 'instant' });
+}
+
+// ════════════════════════════════════
+//  BGM SYSTEM
+// ════════════════════════════════════
+// BGMは2曲のみ: Aoooエリア→サラダボウル、ノーメロエリア→SAYONARA MAYBE
+const BGM = {
+  aooo: { id:'W23msN5N66Y', name:'サラダボウル — Aooo',              mode:'a' },
+  nm:   { id:'av9aKHeOKK4', name:'SAYONARA MAYBE — NOMELON NOLEMON', mode:'n' },
+};
+
+let ytReady = false, bgmPlayer = null, bgmPlayerReady = false;
+let aPlayer = null, nPlayer = null, aPlayerReady = false, nPlayerReady = false;
+let bgmMuted = false, bgmPaused = false, bgmFading = false, previewOn = false, isTransitioning = false;
+let bgmAutoplayFailed = false, bgmPlayPending = false;
+
+// YT API準備完了 → BGMプレイヤーを即生成（autoplay:0で待機）
+function onYouTubeIframeAPIReady(){
+  ytReady = true;
+  bgmPlayer = new YT.Player('bgm-yt', {
+    width:'1', height:'1', videoId: BGM.aooo.id,
+    playerVars:{ autoplay:0, loop:1, playlist:BGM.aooo.id, controls:0, disablekb:1, fs:0, modestbranding:1, rel:0 },
+    events:{
+      onReady: () => {
+        bgmPlayerReady = true;
+        if (bgmPlayPending) {
+          bgmPlayPending = false;
+          // ENTERより先にReadyになれなかった場合 → ユーザー操作外なので手動ボタン表示
+          bgmAutoplayFailed = true;
+          document.getElementById('bgm-panel').classList.add('open');
+          document.getElementById('bgm-mbtn').textContent = '▶ BGM再生';
+          updateBGMUI(BGM.aooo);
+        }
+      },
+      onStateChange: e => { if (e.data === 0) { try { bgmPlayer.playVideo(); } catch(err){} } }
+    }
+  });
+}
+
+// ENTERクリック（ユーザー操作）の直接コンテキストで呼ぶ → ダイアログなし
+function startBGMPlayback(){
+  if (!bgmPlayer || !bgmPlayerReady) {
+    bgmPlayPending = true; // Ready後に手動ボタン表示
+    return;
+  }
+  try {
+    bgmPlayer.mute();
+    bgmPlayer.playVideo();
+  } catch(e){ return; }
+  bgmPaused = false;
+  document.getElementById('bgm-pbtn').textContent = '⏸ 停止';
+  updateBGMUI(BGM.aooo);
+  // ミュート解除 → フェードイン（同じユーザー操作コンテキスト内）
+  setTimeout(() => {
+    try { bgmPlayer.unMute(); bgmPlayer.setVolume(0); } catch(e){}
+    let v = 0;
+    const fi = setInterval(() => {
+      v = Math.min(40, v + 4);
+      try { bgmPlayer.setVolume(v); } catch(e){}
+      if (v >= 40) clearInterval(fi);
+    }, 60);
+  }, 150);
+}
+
+// プレビュープレイヤーを事前生成（▶タップ時にiframe生成待ちなしで即再生）
+function initPreviewPlayers(){
+  const poll = setInterval(() => {
+    if (!ytReady || typeof YT === 'undefined' || !YT.Player) return;
+    clearInterval(poll);
+    // Aooo用
+    const aw = document.getElementById('a-player-wrap');
+    aw.innerHTML = '<div id="a-player-inner"></div>';
+    aPlayer = new YT.Player('a-player-inner', {
+      width:'100%', height:'100%',
+      playerVars:{ rel:0, modestbranding:1, enablejsapi:1, playsinline:1, autoplay:0 },
+      events:{
+        onReady: () => { aPlayerReady = true; },
+        onStateChange: ev => {
+          if (!previewOn || isTransitioning) return;
+          if (ev.data === 0) { const next = (currentAIdx + 1) % AOOO_LIST.length; playA(AOOO_LIST[next].id, AOOO_LIST[next].title); }
+          else if (ev.data === 2) { stopPreview(); }
+        }
+      }
+    });
+    // Nomelon用
+    const nw = document.getElementById('n-player-wrap');
+    nw.innerHTML = '<div id="n-player-inner"></div>';
+    nPlayer = new YT.Player('n-player-inner', {
+      width:'100%', height:'100%',
+      playerVars:{ rel:0, modestbranding:1, enablejsapi:1, playsinline:1, autoplay:0 },
+      events:{
+        onReady: () => { nPlayerReady = true; },
+        onStateChange: ev => {
+          if (!previewOn || isTransitioning) return;
+          if (ev.data === 0) { const next = (currentNIdx + 1) % NM_LIST.length; playN(NM_LIST[next].id, NM_LIST[next].title); }
+          else if (ev.data === 2) { stopPreview(); }
+        }
+      }
+    });
+  }, 200);
+}
+
+function switchBGM(key){
+  if (bgmFading || previewOn || !bgmPlayer) return;
+  const trk = BGM[key]; if (!trk) return;
+  bgmFading = true;
+  let vol = bgmMuted ? 0 : (bgmPlayer.getVolume ? bgmPlayer.getVolume() : 40);
+  const fo = setInterval(() => {
+    vol = Math.max(0, vol - 6);
+    try { bgmPlayer.setVolume(vol); } catch(e){}
+    if (vol <= 0) {
+      clearInterval(fo);
+      try { bgmPlayer.loadVideoById({ videoId: trk.id }); bgmPlayer.setVolume(0); } catch(e){}
+      updateBGMUI(trk);
+      if (!bgmMuted) {
+        let v = 0;
+        const fi = setInterval(() => {
+          v = Math.min(40, v + 5);
+          try { bgmPlayer.setVolume(v); } catch(e){}
+          if (v >= 40) { clearInterval(fi); bgmFading = false; }
+        }, 60);
+      } else { bgmFading = false; }
+    }
+  }, 55);
+}
+
+function updateBGMUI(trk){
+  const tname = document.getElementById('bgm-tname');
+  const icon  = document.getElementById('bgm-icon');
+  const trigger = document.getElementById('bgm-trigger');
+  const ptrack  = document.getElementById('bgm-ptrack');
+  tname.style.opacity = '0';
+  setTimeout(() => {
+    tname.textContent = trk.name;
+    tname.style.opacity = '1';
+    ptrack.textContent = '♪ ' + trk.name;
+  }, 300);
+  icon.className = 'bgm-icon' + (trk.mode==='n' ? ' nmode' : '');
+  trigger.className = 'bgm-trigger ' + (trk.mode==='n' ? 'nmode' : 'amode');
+}
+
+document.getElementById('bgm-trigger').addEventListener('click', () => {
+  document.getElementById('bgm-panel').classList.toggle('open');
+});
+document.getElementById('bgm-pbtn').addEventListener('click', () => {
+  if (!bgmPlayer) return;
+  bgmPaused = !bgmPaused;
+  const btn = document.getElementById('bgm-pbtn');
+  if (bgmPaused) {
+    try { bgmPlayer.pauseVideo(); } catch(e){}
+    btn.textContent = '▶ 再開';
+  } else {
+    try { bgmPlayer.playVideo(); } catch(e){}
+    btn.textContent = '⏸ 停止';
+  }
+});
+document.getElementById('bgm-mbtn').addEventListener('click', () => {
+  const btn = document.getElementById('bgm-mbtn');
+  if (bgmAutoplayFailed) {
+    // 手動でBGM開始
+    bgmAutoplayFailed = false;
+    try { bgmPlayer.unMute(); bgmPlayer.playVideo(); bgmPlayer.setVolume(40); } catch(e){}
+    bgmMuted = false;
+    btn.textContent = '🔊 ミュート';
+    return;
+  }
+  bgmMuted = !bgmMuted;
+  if (bgmMuted) {
+    try { bgmPlayer && bgmPlayer.setVolume(0); } catch(e){}
+    btn.textContent = '🔇 再開';
+  } else {
+    const v = parseInt(document.getElementById('bgm-vol').value);
+    try { bgmPlayer && bgmPlayer.setVolume(v); } catch(e){}
+    btn.textContent = '🔊 ミュート';
+  }
+});
+document.getElementById('bgm-vol').addEventListener('input', e => {
+  if (!bgmMuted) try { bgmPlayer && bgmPlayer.setVolume(+e.target.value); } catch(err){}
+});
+
+// BGM切り替え: ノーメロセクション到達→SAYONARA MAYBE、離れた→サラダボウル
+let bgmCurrent = 'aooo';
+const bgmSectionObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    const target = entry.isIntersecting ? 'nm' : 'aooo';
+    if (target !== bgmCurrent) {
+      bgmCurrent = target;
+      switchBGM(target);
+    }
+  });
+}, { threshold: 0.2 });
+const nmSection = document.getElementById('nomelon');
+if (nmSection) bgmSectionObs.observe(nmSection);
+
+// ════════════════════════════════════
+//  PLAYLISTS (セトリ予想順)
+// ════════════════════════════════════
+const AOOO_LIST = [
+  { id:'W23msN5N66Y', title:'サラダボウル' },
+  { id:'atYx9JPPd_Y', title:'CRAZZZY' },
+  { id:'T5w8cMEWrwo', title:'イエロートイ' },
+  { id:'HLwUNAW9-LI', title:'Geeek' },
+  { id:'_inZeRpW3v0', title:'魔法はスパイス' },
+  { id:'dGhdQEUnHbw', title:'スターサイン' },
+  { id:'O6Wkuto3uHM', title:'水中少女' },
+  { id:'TznkwLWqYh0', title:'Yankeee' },
+  { id:'CWolvJc2zTI', title:'フラジャイル・ナイト' },
+  { id:'0eF6b9pPclE', title:'リピート' },
+  { id:'PxJ79DOBrMY', title:'アパシー' },
+  { id:'ALOjEnv8ecg', title:'ネオワビシイ' },
+  { id:'KDP8H6lN8oA', title:'BAQN' },
+  { id:'s9l3LsKxJCQ', title:'クエスチョン' },
+];
+const NM_LIST = [
+  { id:'av9aKHeOKK4', title:'SAYONARA MAYBE' },
+  { id:'E4BflGhqZb8', title:'ミテミテ' },
+  { id:'Wt_TSC-1Umg', title:'線香金魚' },
+  { id:'2kcrnKPh2Eg', title:'SUGAR' },
+  { id:'f6krfHqG-iQ', title:'水光接天' },
+  { id:'P7nMc5vHCb0', title:'どうにかなっちゃいそう！' },
+  { id:'73stcwZC9vk', title:'ミッドナイト・リフレクション' },
+  { id:'WQ_l7Us5QvI', title:'KILLER MOON' },
+  { id:'HR87CI_uaVo', title:'カイカ' },
+  { id:'0O8Xla5zCj0', title:'シーグラス' },
+  { id:'Lzrd6tehdmw', title:'INAZMA' },
+  { id:'Szc1LaN3FsE', title:'透明水曜日' },
+  { id:'Sex_F47Sh0Q',  title:'rem swimming' },
+  { id:'NJ6i8hhYjnY', title:'night draw' },
+  { id:'NgwYnjNx1O4', title:'HALO' },
+  { id:'0PRHV6xKs3g', title:'ダダ' },
+  { id:'RwbC9oGAwY4', title:'イエロウ' },
+  { id:'50aJ6AtNp0o', title:'ハイド・アンド・シーク' },
+  { id:'rCKcLqsDMuw', title:'きえない' },
+];
+let currentAIdx = -1, currentNIdx = -1;
+
+// ════════════════════════════════════
+//  YOUTUBE PREVIEW PLAYERS (IFrame API)
+// ════════════════════════════════════
+function stopPreview(){
+  previewOn = false;
+  try { aPlayer && aPlayer.stopVideo(); } catch(e){}
+  try { nPlayer && nPlayer.stopVideo(); } catch(e){}
+  document.getElementById('a-player-wrap').style.display = 'none';
+  document.getElementById('n-player-wrap').style.display = 'none';
+  document.getElementById('a-ph').style.display = '';
+  document.getElementById('n-ph').style.display = '';
+  document.getElementById('a-now').textContent = '▶ 曲を選んで予習しよう';
+  document.getElementById('n-now').textContent = '▶ 曲を選んで予習しよう';
+  if (!bgmPaused) {
+    try { bgmPlayer && bgmPlayer.playVideo(); } catch(e){}
+    if (!bgmMuted) try { bgmPlayer && bgmPlayer.setVolume(40); } catch(e){}
+  }
+}
+
+function playA(vid, title){
+  isTransitioning = true;
+  setTimeout(() => { isTransitioning = false; }, 1000);
+  currentAIdx = AOOO_LIST.findIndex(s => s.id === vid);
+  // Nを停止・非表示
+  try { nPlayer && nPlayer.stopVideo(); } catch(e){}
+  document.getElementById('n-player-wrap').style.display = 'none';
+  document.getElementById('n-ph').style.display = '';
+  document.getElementById('n-now').textContent = '▶ 曲を選んで予習しよう';
+  // Aを表示・再生
+  document.getElementById('a-ph').style.display = 'none';
+  document.getElementById('a-player-wrap').style.display = 'block';
+  document.getElementById('a-now').textContent = '▶ Now Playing: ' + title;
+  previewOn = true;
+  try { bgmPlayer && bgmPlayer.setVolume(0); bgmPlayer.pauseVideo(); } catch(e){}
+  updateBGMUI({ name: title + ' — Aooo', mode: 'a' });
+  // 事前生成済みプレイヤーへloadVideoById（ユーザー操作コンテキストで呼ぶことでiOS対応）
+  if (aPlayer && aPlayerReady) {
+    try { aPlayer.loadVideoById(vid); } catch(e){}
+  } else {
+    // フォールバック: まだ準備できていない場合は新規生成
+    const aw = document.getElementById('a-player-wrap');
+    aw.innerHTML = '<div id="a-player-inner"></div>';
+    aPlayer = new YT.Player('a-player-inner', {
+      width:'100%', height:'100%', videoId: vid,
+      playerVars:{ autoplay:1, rel:0, modestbranding:1, enablejsapi:1, playsinline:1 },
+      events:{
+        onReady: () => { aPlayerReady = true; },
+        onStateChange: ev => {
+          if (!previewOn || isTransitioning) return;
+          if (ev.data === 0) { const next = (currentAIdx+1)%AOOO_LIST.length; playA(AOOO_LIST[next].id,AOOO_LIST[next].title); }
+          else if (ev.data === 2) { stopPreview(); }
+        }
+      }
+    });
+  }
+}
+
+function playN(vid, title){
+  isTransitioning = true;
+  setTimeout(() => { isTransitioning = false; }, 1000);
+  currentNIdx = NM_LIST.findIndex(s => s.id === vid);
+  // Aを停止・非表示
+  try { aPlayer && aPlayer.stopVideo(); } catch(e){}
+  document.getElementById('a-player-wrap').style.display = 'none';
+  document.getElementById('a-ph').style.display = '';
+  document.getElementById('a-now').textContent = '▶ 曲を選んで予習しよう';
+  // Nを表示・再生
+  document.getElementById('n-ph').style.display = 'none';
+  document.getElementById('n-player-wrap').style.display = 'block';
+  document.getElementById('n-now').textContent = '▶ Now Playing: ' + title;
+  previewOn = true;
+  try { bgmPlayer && bgmPlayer.setVolume(0); bgmPlayer.pauseVideo(); } catch(e){}
+  updateBGMUI({ name: title + ' — NOMELON NOLEMON', mode: 'n' });
+  if (nPlayer && nPlayerReady) {
+    try { nPlayer.loadVideoById(vid); } catch(e){}
+  } else {
+    const nw = document.getElementById('n-player-wrap');
+    nw.innerHTML = '<div id="n-player-inner"></div>';
+    nPlayer = new YT.Player('n-player-inner', {
+      width:'100%', height:'100%', videoId: vid,
+      playerVars:{ autoplay:1, rel:0, modestbranding:1, enablejsapi:1, playsinline:1 },
+      events:{
+        onReady: () => { nPlayerReady = true; },
+        onStateChange: ev => {
+          if (!previewOn || isTransitioning) return;
+          if (ev.data === 0) { const next = (currentNIdx+1)%NM_LIST.length; playN(NM_LIST[next].id,NM_LIST[next].title); }
+          else if (ev.data === 2) { stopPreview(); }
+        }
+      }
+    });
+  }
+}
+
+// ════════════════════════════════════
+//  SCROLL ANIMATIONS
+// ════════════════════════════════════
+const scrollObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold: 0.06, rootMargin: '0px 0px -36px 0px' });
+document.querySelectorAll('.fi').forEach(el => scrollObs.observe(el));
+
+// NAV scroll
+const mainNav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => {
+  mainNav.classList.toggle('scrolled', window.scrollY > 55);
+}, { passive: true });
+
+// ════════════════════════════════════
+//  TABS
+// ════════════════════════════════════
+document.querySelectorAll('.tabbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const id = btn.dataset.tab;
+    document.querySelectorAll('.tabbtn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + id).classList.add('active');
+  });
+});
+
+// ════════════════════════════════════
+//  CHARTS
+// ════════════════════════════════════
+// — Aooo —
+(function(){
+  const labels = [
+    '魔法はスパイス','サラダボウル','Yankeee',
+    'スターサイン','水中少女','CRAZZZY','BAQN','イエロートイ','Geeek','フラジャイルナイト','ネオワビシイ',
+    'リピート','アパシー','黄昏メモリーロード','FLASH FORWARD','Casablanca',
+    'MORE','エイプリル','ネロリ','青い煙'
+  ];
+  const vals = [95,95,95, 75,75,75,75,75,75,75,75, 50,50,50,50,50, 20,20,20,20];
+  const cats  = [
+    '最高','最高','最高',
+    '高い','高い','高い','高い','高い','高い','高い','高い',
+    '中','中','中','中','中',
+    '低い','低い','低い','低い'
+  ];
+  const colors = vals.map(v =>
+    v>=90 ? 'rgba(56,189,248,.95)' : v>=70 ? 'rgba(56,189,248,.72)' : v>=45 ? 'rgba(56,189,248,.44)' : 'rgba(56,189,248,.2)'
+  );
+  new Chart(document.getElementById('aoooChart'), {
+    type:'bar',
+    data:{ labels, datasets:[{ data:vals, backgroundColor:colors, borderColor:'transparent', borderRadius:3 }] },
+    options:{
+      indexAxis:'y', responsive:true, maintainAspectRatio:false,
+      plugins:{
+        legend:{display:false},
+        tooltip:{
+          backgroundColor:'rgba(7,9,15,.92)', borderColor:'rgba(56,189,248,.25)', borderWidth:1,
+          titleColor:'#38bdf8', bodyColor:'#cbd5e1',
+          callbacks:{ label: ctx=>`  ${ctx.parsed.x}%  (${cats[ctx.dataIndex]})` }
+        }
+      },
+      scales:{
+        x:{ min:0, max:100, grid:{color:'rgba(255,255,255,.04)'}, ticks:{color:'#475569',callback:v=>v+'%',font:{family:'Space Mono',size:10}}, border:{color:'rgba(255,255,255,.05)'} },
+        y:{ grid:{display:false}, ticks:{color:'#94a3b8',font:{family:'Noto Sans JP',size:11}}, border:{color:'transparent'} }
+      }
+    }
+  });
+})();
+
+// — NOMELON —
+(function(){
+  const data = [
+    {n:'SAYONARA MAYBE',v:100},{n:'ミッドナイト・リフレクション',v:100},{n:'どうにかなっちゃいそう！',v:100},
+    {n:'KILLER MOON',v:100},{n:'ミテミテ',v:100},{n:'カイカ',v:100},
+    {n:'I THINK',v:95},{n:'焦熱',v:90},{n:'SUGAR',v:80},{n:'シーグラス',v:78},
+    {n:'INAZMA',v:75},{n:'ハイド・アンド・シーク',v:70},{n:'rem swimming',v:58},
+    {n:'night draw',v:57},{n:'きえない',v:55},{n:'HALO',v:50},
+    {n:'ダダ',v:28},{n:'水光接天',v:25},{n:'きみの惑星',v:22},{n:'透明水曜日',v:20},
+    {n:'線香金魚',v:18},{n:'syrup',v:15},{n:'moonshadow',v:14},{n:'ゴー・トゥ・ヘヴン',v:13},
+    {n:'タッチ',v:8},{n:'イエロウ',v:7},{n:'NAZONAZO',v:6},{n:'雨にうたえば',v:5},
+    {n:'フイルム',v:4},{n:'ウィスパー・シティ',v:3},{n:'ブリーチ',v:2},{n:'ゴーストキッス',v:2},
+    {n:'cocoon',v:1},{n:'mutant',v:1},
+  ];
+  const colors = data.map(d =>
+    d.v>=100?'rgba(129,140,248,.95)':d.v>=80?'rgba(129,140,248,.78)':d.v>=60?'rgba(129,140,248,.6)':d.v>=40?'rgba(129,140,248,.4)':'rgba(129,140,248,.2)'
+  );
+  new Chart(document.getElementById('nmChart'), {
+    type:'bar',
+    data:{ labels:data.map(d=>d.n), datasets:[{ data:data.map(d=>d.v), backgroundColor:colors, borderColor:'transparent', borderRadius:3 }] },
+    options:{
+      indexAxis:'y', responsive:true, maintainAspectRatio:false,
+      plugins:{
+        legend:{display:false},
+        tooltip:{
+          backgroundColor:'rgba(7,9,15,.92)', borderColor:'rgba(99,102,241,.25)', borderWidth:1,
+          titleColor:'#818cf8', bodyColor:'#cbd5e1',
+          callbacks:{ label: ctx=>`  ${ctx.parsed.x}%` }
+        }
+      },
+      scales:{
+        x:{ min:0, max:100, grid:{color:'rgba(255,255,255,.04)'}, ticks:{color:'#475569',callback:v=>v+'%',font:{family:'Space Mono',size:10}}, border:{color:'rgba(255,255,255,.05)'} },
+        y:{ grid:{display:false}, ticks:{color:'#94a3b8',font:{family:'Noto Sans JP',size:11}}, border:{color:'transparent'} }
+      }
+    }
+  });
+})();
+</script>
+</body>
+</html>
